@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+     <b>Plymouth Rock</b> Home Inspector
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+  <ion-content class="all-photos-page" padding>
+    <ion-grid>
+      <ion-row class="frame-margin">
+          <div *ngIf="!taken_photo" id="frame" >
+              <div class="outline">
+               <div class="inner-border">
+                      <img style="width:70px; height: 65px;" src="assets/imgs/{{photo_thumbnail}}.png">
+              </div>   
+              </div>
+              </div> 
+        <img *ngIf="taken_photo" class="taken-photo" src="{{taken_photo}}"/>
+      </ion-row>
+      <ion-row justify-content-center class="upload-btns">
+         <ion-img (click)="accessGallery()" style="width:60px; height: 60px; margin-right: 45px;" src="assets/imgs/gallery_btn.png"></ion-img>
+          <ion-img (click)="takePhoto()" style="width:65px; height: 65px;" src="assets/imgs/camera_icon.png"></ion-img>
+      </ion-row>
+    </ion-grid>
+    
+ </ion-content> 
+ <ion-footer class="bottom-text">
+    <ion-toolbar>
+        <div><p class="title">{{title_text}}</p></div>
+        <div><p>{{tip_text}}</p></div>
+    </ion-toolbar>
+  </ion-footer>
+  
+  
+  
+  

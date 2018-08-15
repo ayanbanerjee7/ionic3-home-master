@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+     <b>Plymouth Rock</b> Home Inspector
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="all-photos-page" padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+    <p>These are the photos needed for your policy, tap to get started</p> 
+  </ion-col>
+  </ion-row>
+  <span class="exterior">
+  <ion-row>
+  <ion-col  col-5>
+   <div (click)="takePhoto('exteriorFront')">Exterior: Front</div>
+  </ion-col>
+  <ion-col col-7>
+      <div (click)="takePhoto('exteriorRight')">Exterior: Right Side</div>  
+     </ion-col>
+  </ion-row>
+  <ion-row >
+      <ion-col col-7>
+       <div (click)="takePhoto('exteriorLeft')">Exterior: Left Side</div>
+      </ion-col>
+      <ion-col col-5>
+          <div>Exterior: Back</div>  
+         </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-3>
+           <div>Shed</div>
+          </ion-col>
+          <ion-col col-6>
+              <div>Trampoline</div>  
+             </ion-col>
+             <ion-col col-3>
+                <div>Pool</div>  
+               </ion-col>
+          </ion-row>
+  </span>
+  <span class="exterior interior">
+      <ion-row>
+      <ion-col col-4>
+       <div>Kitchen</div>
+      </ion-col>
+      <ion-col col-6>
+          <div>Livingroom</div>  
+         </ion-col>
+      </ion-row>
+      <ion-row >
+          <ion-col col-4>
+           <div>Master Bath</div>
+          </ion-col>
+          <ion-col col-4>
+              <div>Bath two</div>  
+             </ion-col>
+             <ion-col col-4>
+                <div>Bath Three</div>  
+               </ion-col>
+          </ion-row>
+          <ion-row >
+              <ion-col col-5>
+               <div>Family Room</div>
+              </ion-col>
+              <ion-col col-7>
+                  <div (click)="takePhoto('bedRoom')">Master Bedroom</div>  
+                 </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-5>
+                     <div (click)="takePhoto('bedRoom')">Bedroom Two</div>
+                    </ion-col>
+                    <ion-col col-7>
+                        <div (click)="takePhoto('bedRoom')">Bedroom Three</div>  
+                       </ion-col>
+                      </ion-row>
+      </span>
+      <a (click)="goToNext()">Go to submit</a>
+  </ion-grid>
+  </ion-content>

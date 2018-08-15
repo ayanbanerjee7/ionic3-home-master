@@ -1,0 +1,111 @@
+webpackJsonp([3],{
+
+/***/ 278:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SubmitphotosPageModule", function() { return SubmitphotosPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submitphotos__ = __webpack_require__(288);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var SubmitphotosPageModule = /** @class */ (function () {
+    function SubmitphotosPageModule() {
+    }
+    SubmitphotosPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__submitphotos__["a" /* SubmitphotosPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__submitphotos__["a" /* SubmitphotosPage */]),
+            ],
+        })
+    ], SubmitphotosPageModule);
+    return SubmitphotosPageModule;
+}());
+
+//# sourceMappingURL=submitphotos.module.js.map
+
+/***/ }),
+
+/***/ 288:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubmitphotosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(196);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the SubmitphotosPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var SubmitphotosPage = /** @class */ (function () {
+    function SubmitphotosPage(navCtrl, navParams, nativeStorage) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.nativeStorage = nativeStorage;
+        this.images = [];
+        this.keys = [];
+        this.imagesObj = {};
+    }
+    SubmitphotosPage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.nativeStorage.keys().then(function (keys) {
+            return Promise.all(keys.map(function (k) {
+                return _this.nativeStorage.getItem(k).then(function (data) {
+                    _this.imagesObj = { 'key': k,
+                        'imgurl': data };
+                    _this.images.push(_this.imagesObj);
+                });
+            }));
+        }), function (e) {
+            console.log(e);
+        };
+    };
+    SubmitphotosPage.prototype.editPhoto = function (k) {
+        this.navCtrl.push('TakeaphotoPage', { 'photoId': k });
+    };
+    SubmitphotosPage.prototype.submitPhotos = function () {
+        this.navCtrl.push('ThankyouPage');
+        this.nativeStorage.clear();
+    };
+    SubmitphotosPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-submitphotos',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\submitphotos\submitphotos.html"*/'<ion-header>\n    <ion-navbar color="primary">\n      <ion-title>\n        <b>Plymouth Rock</b> Home Inspector\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n\n<ion-content class="submit-page" padding>\n     <ion-grid>\n    <ion-row justify-content-center>\n     <p class="alldone-text">All done. Good job!</p> \n     <p class="retake-text">Retake any photo or submit your inventory now</p>\n    </ion-row>\n    <ion-row justify-content-center>\n        <button ion-button color="secondary"  (click)="submitPhotos()"  expand="full">Submit Photos</button>  \n    </ion-row>\n    <ion-row class="gallery">\n    <ion-col col-4 *ngFor="let m of images">\n        <img (click)="editPhoto(m.key)" src="{{m.imgurl}}"/> \n   </ion-col>\n    </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\submitphotos\submitphotos.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
+    ], SubmitphotosPage);
+    return SubmitphotosPage;
+}());
+
+//# sourceMappingURL=submitphotos.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=3.js.map

@@ -1,0 +1,36 @@
+page-allphotos {
+     
+        font-family: 'Whitney-Medium', 'Whitney Medium', 'Whitney';
+        color:#4D4D4F; 
+        p {
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16px;
+            text-align: center;
+            line-height: 24px;
+        } 
+        .exterior{
+            div {
+                font-weight: 300;
+                font-style: normal;
+                font-size: 15px;
+                color: #FFFFFF;
+                height: 55px;
+                background-color: rgba(0, 122, 201, 0.498039);
+                border: none;
+                border-radius: 10px;
+                text-align: center;
+                padding-top: 18px;
+            }
+        }
+        .interior{
+            div {
+            color: #69B221;
+               background-color: rgba(190, 214, 0, 0.49803);
+               
+            }
+        }
+           
+        
+    }
+

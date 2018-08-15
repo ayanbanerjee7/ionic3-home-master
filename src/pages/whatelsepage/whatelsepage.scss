@@ -1,0 +1,52 @@
+page-whatelsepage {
+    
+        font-family: 'Whitney-Medium', 'Whitney Medium', 'Whitney';
+        color:#4D4D4F;
+     .counter-row {
+      border:solid 1px;
+      border-radius: 6px; 
+      text-align:  center;
+      height: 50px; 
+      border-color:rgba(204, 204, 204, 1);
+      margin-bottom: 20px;
+     } 
+     .col-border {
+      border-right: solid 1px;    
+      border-color:rgba(204, 204, 204, 1);
+     }  
+     .sign {
+        font-weight: 300;
+        font-style: normal;
+        font-size: 28px;
+        color: #007AC9;
+     }
+     .number {
+         font-size: 18px;
+         margin-top: 9px;
+     }
+     p {
+        text-align: center;
+        
+     }
+     .heading-text {
+        font-size:16px;
+        font-weight: 500;
+     }
+     .sub-head-text {
+         font-size: 14px;
+        font-weight: 300;
+        color: rgba(77, 77, 79, 0.749019607843137);
+     }
+     .text {
+         margin-top:7px;
+     }
+     ion-checkbox {
+         margin-top: 8px;
+     }
+     .add-border-color {
+        border-color: #FF6319;
+        color:#FF6319;
+       }
+     
+    }
+

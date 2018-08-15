@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Plymouth Rock Home Inspector
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  
+  <img [src]="bedroomImage" *ngIf="bedroomImage" class='col-sm-3'/>
+  <img [src]="outsideImage" *ngIf="outsideImage" class='col-sm-3'/>
+  <img [src]="diningImage" *ngIf="diningImage" class='col-sm-3'/>
+
+
+  <button ion-button color="primary" (click)="submitGallery()"> Submit All </button>
+
+</ion-content>

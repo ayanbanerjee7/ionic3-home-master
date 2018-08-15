@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+     <b>Plymouth Rock</b> Home Inspector
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home-page" padding>
+  <ion-grid>
+  <ion-row justify-content-center class="top_title">
+  <ion-col col-12>
+   <h1>Welcome, homeowner</h1>
+   <p class="thanks_text">Thank you for trusting us with your home</p>
+   </ion-col>
+   </ion-row>
+   <form #f="ngForm" ngNativeValidate (ngSubmit)="login(f.value)">
+  <ion-row> 
+  <ion-label>Policyholder Last Name</ion-label>
+  <ion-col col-12>
+  <ion-input required type="text" ></ion-input>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+  <ion-col col-6>
+      <ion-label>Zip Code</ion-label>
+      <ion-input required type="text"></ion-input>
+  </ion-col>
+  <ion-col col-6>
+      <ion-label>Date of Birth</ion-label>
+      <ion-input disabled="true" type="text" name="DOB" (click)="openDatepicker()" [(ngModel)]="today" ng-readonly></ion-input>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+  <p class="privacy-text">Or <a (onfocus)="loginWithPolicyNumber()">sign in using Policy Number</a></p>  
+  </ion-row>
+  <button col-12 ion-button color="secondary"  type="submit" >Agree and Continue</button>
+  </form>
+  <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>
+  <ion-row justify-content-center>
+          <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   
+  </ion-row>
+  
+  </ion-grid>
+  
+  </ion-content>

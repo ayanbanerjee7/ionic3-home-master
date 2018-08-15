@@ -1,0 +1,112 @@
+webpackJsonp([1],{
+
+/***/ 281:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WhatelsepagePageModule", function() { return WhatelsepagePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__whatelsepage__ = __webpack_require__(292);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var WhatelsepagePageModule = /** @class */ (function () {
+    function WhatelsepagePageModule() {
+    }
+    WhatelsepagePageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__whatelsepage__["a" /* WhatelsepagePage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__whatelsepage__["a" /* WhatelsepagePage */]),
+            ],
+        })
+    ], WhatelsepagePageModule);
+    return WhatelsepagePageModule;
+}());
+
+//# sourceMappingURL=whatelsepage.module.js.map
+
+/***/ }),
+
+/***/ 292:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WhatelsepagePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the WhatelsepagePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var WhatelsepagePage = /** @class */ (function () {
+    function WhatelsepagePage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.checkboxObj = {
+            dog: false,
+            pool: false,
+            trampoline: false,
+            shed: false,
+            garage: false,
+            basement: false,
+            rentalApt: false,
+            homeBusiness: false,
+            oilTank: false,
+            securitySys: false,
+            smokeDetect: false,
+            woodStove: false
+        };
+    }
+    WhatelsepagePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad WhatelsepagePage');
+    };
+    WhatelsepagePage.prototype.goToNext = function () {
+        this.navCtrl.push("AllphotosPage");
+    };
+    WhatelsepagePage.prototype.selectCheckbox = function (event) {
+        if (this.checkboxObj[event]) {
+            this.checkboxObj[event] = false;
+        }
+        else {
+            this.checkboxObj[event] = true;
+        }
+    };
+    WhatelsepagePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-whatelsepage',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\whatelsepage\whatelsepage.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="what-else-page" padding>\n  <ion-grid>\n      <ion-row justify-content-center>\n          <ion-img style="width:61px; height: 61px; margin-top:32px" src="assets/imgs/pad.png"></ion-img>\n      </ion-row>\n      <p class="heading-text">What else do you have?</p>\n      <p class="sub-head-text">Select all that apply</p>\n      <ion-row (click)="selectCheckbox(\'dog\')" [ngClass]="{\'add-border-color\': checkboxObj.dog}" class="counter-row">\n          <ion-col col-3>\n              <ion-checkbox *ngIf="checkboxObj.dog" color="secondary" [checked]=\'checkboxObj.dog\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Dog</div>\n          </ion-col>\n      </ion-row>\n      \n      <ion-row   (click)="selectCheckbox(\'pool\')" [ngClass]="{\'add-border-color\': checkboxObj.pool}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.pool" color="secondary" [checked]=\'checkboxObj.pool\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Pool/Hot Tub</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'trampoline\')" [ngClass]="{\'add-border-color\': checkboxObj.trampoline}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.trampoline" color="secondary" [checked]=\'checkboxObj.trampoline\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Trampoline</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'shed\')" [ngClass]="{\'add-border-color\': checkboxObj.shed}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.shed" color="secondary" [checked]=\'checkboxObj.shed\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Shed</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'garage\')" [ngClass]="{\'add-border-color\': checkboxObj.garage}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.garage" color="secondary" [checked]=\'checkboxObj.garage\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Detached Garage</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'basement\')" [ngClass]="{\'add-border-color\': checkboxObj.basement}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.basement" color="secondary" [checked]=\'checkboxObj.basement\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Finished Basement</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'rentalApt\')" [ngClass]="{\'add-border-color\': checkboxObj.rentalApt}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.rentalApt" color="secondary" [checked]=\'checkboxObj.rentalApt\'></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Rental / In-Law Apartment</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'homeBusiness\')" [ngClass]="{\'add-border-color\': checkboxObj.homeBusiness}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.homeBusiness" color="secondary" [checked]=\'checkboxObj.homeBusiness\' ></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Home Business</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'oilTank\')" [ngClass]="{\'add-border-color\': checkboxObj.oilTank}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.oilTank" color="secondary" [checked]=\'checkboxObj.oilTank\' ></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Oil Tank</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'securitySys\')" [ngClass]="{\'add-border-color\': checkboxObj.securitySys}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.securitySys" color="secondary" [checked]=\'checkboxObj.securitySys\' ></ion-checkbox>\n          </ion-col>\n          <ion-col  col-7>\n              <div class="text">Security System</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'smokeDetect\')" [ngClass]="{\'add-border-color\': checkboxObj.smokeDetect}" class="counter-row">\n          <ion-col  col-3>\n              <ion-checkbox *ngIf="checkboxObj.smokeDetect" color="secondary" [checked]=\'checkboxObj.smokeDetect\'></ion-checkbox>\n          </ion-col>\n          <ion-col col-7>\n              <div class="text">Smoke Detectors</div>\n          </ion-col>\n      </ion-row>\n      <ion-row  (click)="selectCheckbox(\'woodStove\')" [ngClass]="{\'add-border-color\': checkboxObj.woodStove}" class="counter-row">\n          <ion-col col-3>\n              <ion-checkbox *ngIf="checkboxObj.woodStove" color="secondary" [checked]=\'checkboxObj.woodStove\'></ion-checkbox>\n          </ion-col>\n          <ion-col col-7>\n              <div class="text">Wood Stove</div>\n          </ion-col>\n      </ion-row>\n      <button col-12 ion-button (click)="goToNext()" color="secondary" class="next-btn"  type="submit" >Done! Let’s take some pics</button>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\whatelsepage\whatelsepage.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    ], WhatelsepagePage);
+    return WhatelsepagePage;
+}());
+
+//# sourceMappingURL=whatelsepage.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=1.js.map

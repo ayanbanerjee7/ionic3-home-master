@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+     <b>Plymouth Rock</b> Home Inspector
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="basic-info-page" padding>
+  <ion-grid>
+      <ion-row justify-content-center>
+          <ion-img style="width:68px; height: 46px; margin-top:32px" src="assets/imgs/bed.png"></ion-img>
+      </ion-row>
+      <p>How many bedrooms?</p>
+      <ion-row class="counter-row">
+          <ion-col class="col-border" col-3>
+              <div (click)="decrease_bednum()" class="sign">-</div>
+          </ion-col>
+          <ion-col class="col-border" col-6>
+              <div class="number">{{display_bednum}}</div>
+          </ion-col>
+          <ion-col size="3">
+              <div (click)="incrase_bednum()" class="sign">+</div>
+          </ion-col>
+      </ion-row>
+      <p>How many bathrooms?</p>
+      <ion-row class="counter-row">
+          <ion-col class="col-border" col-3>
+              <div (click)="decrease_bathnum()" class="sign">-</div>
+          </ion-col>
+          <ion-col class="col-border" col-6>
+              <div class="number">{{display_bathnum}}</div>
+          </ion-col>
+          <ion-col size="3">
+              <div (click)="incrase_bathnum()" class="sign">+</div>
+          </ion-col>
+      </ion-row>
+      <p>Primary source of heat?</p>
+      <ion-row (click)="selectCheckbox('heatPump')" [ngClass]="{'add-border-color':checkboxObj.heatPump}" class="counter-row">
+          <ion-col col-3>
+              <ion-checkbox *ngIf="checkboxObj.heatPump" color="secondary" [checked]='checkboxObj.heatPump'></ion-checkbox>
+          </ion-col>
+          <ion-col col-7>
+              <div class="text">Heat Pump</div>
+          </ion-col>
+      </ion-row>
+      
+      <ion-row (click)="selectCheckbox('furnace')" [ngClass]="{'add-border-color': checkboxObj.furnace}" class="counter-row">
+          <ion-col col-3>
+              <ion-checkbox  *ngIf="checkboxObj.furnace" color="secondary" [checked]='checkboxObj.furnace' ></ion-checkbox>
+          </ion-col>
+          <ion-col col-7>
+              <div class="text">Furnace</div>
+          </ion-col>
+      </ion-row>
+      <ion-row (click)="selectCheckbox('boiler')" [ngClass]="{'add-border-color': checkboxObj.boiler}" class="counter-row">
+          <ion-col col-3>
+              <ion-checkbox  *ngIf="checkboxObj.boiler" color="secondary" [checked]='checkboxObj.boiler'></ion-checkbox>
+          </ion-col>
+          <ion-col col-7>
+              <div class="text">Boiler</div>
+          </ion-col>
+      </ion-row>
+      <ion-row (click)="selectCheckbox('wood')" [ngClass]="{'add-border-color': checkboxObj.wood}" class="counter-row">
+          <ion-col col-3>
+              <ion-checkbox  *ngIf="checkboxObj.wood" color="secondary" [checked]='checkboxObj.wood'></ion-checkbox>
+          </ion-col>
+          <ion-col col-7>
+              <div class="text">Wood</div>
+          </ion-col>
+      </ion-row>
+      <ion-row (click)="selectCheckbox('electricBase')" [ngClass]="{'add-border-color': checkboxObj.electricBase}" class="counter-row">
+          <ion-col col-3>
+              <ion-checkbox  *ngIf="checkboxObj.electricBase" color="secondary" [checked]='checkboxObj.electricBase'></ion-checkbox>
+          </ion-col>
+          <ion-col col-7>
+              <div class="text">Electric Baseboard</div>
+          </ion-col>
+      </ion-row>
+      <ion-row (click)="selectCheckbox('other')" [ngClass]="{'add-border-color': checkboxObj. other}" class="counter-row">
+          <ion-col col-3>
+              <ion-checkbox  *ngIf="checkboxObj.other" color="secondary" [checked]='checkboxObj.other'></ion-checkbox>
+          </ion-col>
+          <ion-col col-7>
+              <div class="text">Other</div>
+          </ion-col>
+      </ion-row>
+      <button col-12 ion-button (click)="goToNext()" color="secondary"  class="next-btn" type="submit" color="secondary" >Next</button>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+     <b>Plymouth Rock</b> Home Inspector
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  padding>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-img  style="width:112px; height: 117px; margin-top:32px" src="assets/imgs/home_in_hand.png"></ion-img>
+  </ion-row>
+ <ion-row col-12 justify-content-center>
+<h1>125 Main Street</h1>
+<p>Photos of your home are necessary in order to easily reimburse you in the event of a claim. Answering the following questions will tell us which photos are needed.</p>
+</ion-row>
+<ion-row>
+    <button  (click)="goToNextPage()" ion-button color="secondary" class="got-it-btn" >Got it</button>
+</ion-row>
+</ion-grid>
+  </ion-content>

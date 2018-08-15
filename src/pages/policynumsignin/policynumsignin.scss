@@ -1,0 +1,45 @@
+.home-page {
+    font-family: 'Whitney-Medium', 'Whitney Medium', 'Whitney';
+    color:#4D4D4F;
+    .top_title {
+        text-align: center;
+        h1{
+           
+            font-weight: 500;
+            font-style: normal;
+            font-size: 30px;
+            color: #007AC9;
+            text-align: center;
+            line-height: 36px;
+        }
+        .thanks_text {
+            font-size: 16px;
+            margin-top: 0px; 
+            
+        }
+    }
+    ion-label{
+        font-size: 13px;
+        margin-left: 10px;
+    }
+    ion-input {
+        box-sizing: border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(204, 204, 204, 1);
+        border-radius: 6px;
+        height:50px;
+        text-align: center;
+    }
+    .privacy-text {
+        font-size: 14px;
+        margin-left: 10px;
+    }  
+    a {
+        color: #007ac9;
+        cursor: pointer;
+    } 
+    
+}
+
+
