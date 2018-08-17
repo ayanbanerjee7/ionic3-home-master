@@ -12,9 +12,10 @@
       </ion-row>
       <p class="heading-text">What else do you have?</p>
       <p class="sub-head-text">Select all that apply</p>
+      <form #f="ngForm" novalidate  (ngSubmit)="whatElseItems(f.value)">
       <ion-row (click)="selectCheckbox('dog')" [ngClass]="{'add-border-color': checkboxObj.dog}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox *ngIf="checkboxObj.dog" color="secondary" [checked]='checkboxObj.dog'></ion-checkbox>
+              <ion-checkbox name="dog"   ngModel="true" *ngIf="checkboxObj.dog" color="secondary" [checked]='checkboxObj.dog'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Dog</div>
@@ -23,7 +24,7 @@
       
       <ion-row   (click)="selectCheckbox('pool')" [ngClass]="{'add-border-color': checkboxObj.pool}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.pool" color="secondary" [checked]='checkboxObj.pool'></ion-checkbox>
+              <ion-checkbox name="pool"   ngModel="true" *ngIf="checkboxObj.pool" color="secondary" [checked]='checkboxObj.pool'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Pool/Hot Tub</div>
@@ -31,7 +32,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('trampoline')" [ngClass]="{'add-border-color': checkboxObj.trampoline}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.trampoline" color="secondary" [checked]='checkboxObj.trampoline'></ion-checkbox>
+              <ion-checkbox name="trampoline"   ngModel="true" *ngIf="checkboxObj.trampoline" color="secondary" [checked]='checkboxObj.trampoline'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Trampoline</div>
@@ -39,7 +40,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('shed')" [ngClass]="{'add-border-color': checkboxObj.shed}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.shed" color="secondary" [checked]='checkboxObj.shed'></ion-checkbox>
+              <ion-checkbox name="shed"   ngModel="true" *ngIf="checkboxObj.shed" color="secondary" [checked]='checkboxObj.shed'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Shed</div>
@@ -47,7 +48,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('garage')" [ngClass]="{'add-border-color': checkboxObj.garage}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.garage" color="secondary" [checked]='checkboxObj.garage'></ion-checkbox>
+              <ion-checkbox name="garage"   ngModel="true" *ngIf="checkboxObj.garage" color="secondary" [checked]='checkboxObj.garage'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Detached Garage</div>
@@ -55,7 +56,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('basement')" [ngClass]="{'add-border-color': checkboxObj.basement}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.basement" color="secondary" [checked]='checkboxObj.basement'></ion-checkbox>
+              <ion-checkbox name="basement"   ngModel="true" *ngIf="checkboxObj.basement" color="secondary" [checked]='checkboxObj.basement'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Finished Basement</div>
@@ -63,7 +64,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('rentalApt')" [ngClass]="{'add-border-color': checkboxObj.rentalApt}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.rentalApt" color="secondary" [checked]='checkboxObj.rentalApt'></ion-checkbox>
+              <ion-checkbox name="rentalApt"   ngModel="true" *ngIf="checkboxObj.rentalApt" color="secondary" [checked]='checkboxObj.rentalApt'></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Rental / In-Law Apartment</div>
@@ -71,7 +72,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('homeBusiness')" [ngClass]="{'add-border-color': checkboxObj.homeBusiness}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.homeBusiness" color="secondary" [checked]='checkboxObj.homeBusiness' ></ion-checkbox>
+              <ion-checkbox name="homeBusiness"   ngModel="true" *ngIf="checkboxObj.homeBusiness" color="secondary" [checked]='checkboxObj.homeBusiness' ></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Home Business</div>
@@ -79,7 +80,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('oilTank')" [ngClass]="{'add-border-color': checkboxObj.oilTank}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.oilTank" color="secondary" [checked]='checkboxObj.oilTank' ></ion-checkbox>
+              <ion-checkbox name="oilTank"   ngModel="true" *ngIf="checkboxObj.oilTank" color="secondary" [checked]='checkboxObj.oilTank' ></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Oil Tank</div>
@@ -87,7 +88,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('securitySys')" [ngClass]="{'add-border-color': checkboxObj.securitySys}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.securitySys" color="secondary" [checked]='checkboxObj.securitySys' ></ion-checkbox>
+              <ion-checkbox name="securitySys"   ngModel="true" *ngIf="checkboxObj.securitySys" color="secondary" [checked]='checkboxObj.securitySys' ></ion-checkbox>
           </ion-col>
           <ion-col  col-7>
               <div class="text">Security System</div>
@@ -95,7 +96,7 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('smokeDetect')" [ngClass]="{'add-border-color': checkboxObj.smokeDetect}" class="counter-row">
           <ion-col  col-3>
-              <ion-checkbox *ngIf="checkboxObj.smokeDetect" color="secondary" [checked]='checkboxObj.smokeDetect'></ion-checkbox>
+              <ion-checkbox name="smokeDetect"   ngModel="true" *ngIf="checkboxObj.smokeDetect" color="secondary" [checked]='checkboxObj.smokeDetect'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Smoke Detectors</div>
@@ -103,12 +104,13 @@
       </ion-row>
       <ion-row  (click)="selectCheckbox('woodStove')" [ngClass]="{'add-border-color': checkboxObj.woodStove}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox *ngIf="checkboxObj.woodStove" color="secondary" [checked]='checkboxObj.woodStove'></ion-checkbox>
+              <ion-checkbox name="woodStove"   ngModel="true" *ngIf="checkboxObj.woodStove" color="secondary" [checked]='checkboxObj.woodStove'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Wood Stove</div>
           </ion-col>
       </ion-row>
-      <button col-12 ion-button (click)="goToNext()" color="secondary" class="next-btn"  type="submit" >Done! Let’s take some pics</button>
-  </ion-grid>
+      <button col-12 ion-button color="secondary" class="next-btn"  type="submit" >Done! Let’s take some pics</button>
+     </form>
+    </ion-grid>
 </ion-content>

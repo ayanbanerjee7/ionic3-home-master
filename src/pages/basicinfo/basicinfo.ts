@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { NativeStorage } from '@ionic-native/native-storage';
 /**
  * Generated class for the BasicinfoPage page.
  *
@@ -26,7 +26,8 @@ export class BasicinfoPage {
     electricBase:false,
     other:false,
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  errorMsg;
+  constructor(public nativeStorage: NativeStorage,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -58,9 +59,7 @@ export class BasicinfoPage {
       this.display_bathnum=this.display_bathnum-1;
     }
   }
-  goToNext(){
-    this.navCtrl.push("WhatelsepagePage");
-  }
+  
   selectCheckbox(event){
   if(this.checkboxObj[event]){
     this.checkboxObj[event]=false;
@@ -68,5 +67,21 @@ export class BasicinfoPage {
     this.checkboxObj[event]=true;
   }
 
+  }
+  heatSource(f){
+    console.log(f);
+    if(Object.keys(f).length == 0){
+      this.errorMsg='Please select source of Heat';
+    }
+    if(Object.keys(f).length >1){
+      this.errorMsg='Please select only one source of Heat';
+    }
+    if(Object.keys(f).length == 1){
+      this.errorMsg='';
+      this.nativeStorage.setItem('noOfBedRooms',this.display_bednum);
+      this.nativeStorage.setItem('noOfBathRooms',this.display_bathnum);
+      this.nativeStorage.setItem('primaryHeatSource',f);
+      this.navCtrl.push('WhatelsepagePage') 
+    }
   }
 }

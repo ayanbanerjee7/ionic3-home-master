@@ -15,12 +15,14 @@
         .thanks_text {
             font-size: 16px;
             margin-top: 0px; 
+            margin-bottom: 10px;
             
         }
     }
     ion-label{
         font-size: 13px;
         margin-left: 10px;
+        margin-bottom: 5px;
     }
     ion-input {
         box-sizing: border-box;
@@ -39,19 +41,22 @@
         color: #007ac9;
         cursor: pointer;
     }
-    .dateclass{
-        width:100%;
-        }
+    .error {
+        color:red;
+    }
+    // .dateclass{
+    //     width:100%;
+    //     }
         
-        .dateclass.placeholderclass::before{
-        width:100%;
-        content:attr(placeholder);
-        }
+    //     .dateclass.placeholderclass::before{
+    //     width:100%;
+    //     content:attr(placeholder);
+    //     }
         
-        .dateclass.placeholderclass:hover::before{
-        width:0%;
-        content:"";
-        }
+    //     .dateclass.placeholderclass:hover::before{
+    //     width:0%;
+    //     content:"";
+    //     }
 }
 
 

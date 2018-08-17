@@ -35,9 +35,11 @@
           </ion-col>
       </ion-row>
       <p>Primary source of heat?</p>
+      <p class="error" *ngIf="errorMsg">{{errorMsg}}</p>
+      <form #f="ngForm" novalidate  (ngSubmit)="heatSource(f.value)">
       <ion-row (click)="selectCheckbox('heatPump')" [ngClass]="{'add-border-color':checkboxObj.heatPump}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox *ngIf="checkboxObj.heatPump" color="secondary" [checked]='checkboxObj.heatPump'></ion-checkbox>
+              <ion-checkbox name="heatPump"   ngModel="true" *ngIf="checkboxObj.heatPump" color="secondary" [checked]='checkboxObj.heatPump'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Heat Pump</div>
@@ -46,7 +48,7 @@
       
       <ion-row (click)="selectCheckbox('furnace')" [ngClass]="{'add-border-color': checkboxObj.furnace}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox  *ngIf="checkboxObj.furnace" color="secondary" [checked]='checkboxObj.furnace' ></ion-checkbox>
+              <ion-checkbox name="furnace"  ngModel="true"  *ngIf="checkboxObj.furnace" color="secondary" [checked]='checkboxObj.furnace' ></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Furnace</div>
@@ -54,7 +56,7 @@
       </ion-row>
       <ion-row (click)="selectCheckbox('boiler')" [ngClass]="{'add-border-color': checkboxObj.boiler}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox  *ngIf="checkboxObj.boiler" color="secondary" [checked]='checkboxObj.boiler'></ion-checkbox>
+              <ion-checkbox   name="boiler"  ngModel="true" *ngIf="checkboxObj.boiler" color="secondary" [checked]='checkboxObj.boiler'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Boiler</div>
@@ -62,7 +64,7 @@
       </ion-row>
       <ion-row (click)="selectCheckbox('wood')" [ngClass]="{'add-border-color': checkboxObj.wood}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox  *ngIf="checkboxObj.wood" color="secondary" [checked]='checkboxObj.wood'></ion-checkbox>
+              <ion-checkbox   name="wood"  ngModel="true"  *ngIf="checkboxObj.wood" color="secondary" [checked]='checkboxObj.wood'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Wood</div>
@@ -70,7 +72,7 @@
       </ion-row>
       <ion-row (click)="selectCheckbox('electricBase')" [ngClass]="{'add-border-color': checkboxObj.electricBase}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox  *ngIf="checkboxObj.electricBase" color="secondary" [checked]='checkboxObj.electricBase'></ion-checkbox>
+              <ion-checkbox   name="electricBase"  ngModel="true"  *ngIf="checkboxObj.electricBase" color="secondary" [checked]='checkboxObj.electricBase'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Electric Baseboard</div>
@@ -78,12 +80,13 @@
       </ion-row>
       <ion-row (click)="selectCheckbox('other')" [ngClass]="{'add-border-color': checkboxObj. other}" class="counter-row">
           <ion-col col-3>
-              <ion-checkbox  *ngIf="checkboxObj.other" color="secondary" [checked]='checkboxObj.other'></ion-checkbox>
+              <ion-checkbox   name="other"  ngModel="true" *ngIf="checkboxObj.other" color="secondary" [checked]='checkboxObj.other'></ion-checkbox>
           </ion-col>
           <ion-col col-7>
               <div class="text">Other</div>
           </ion-col>
       </ion-row>
-      <button col-12 ion-button (click)="goToNext()" color="secondary"  class="next-btn" type="submit" color="secondary" >Next</button>
-  </ion-grid>
+      <button col-12 ion-button  color="secondary"  class="next-btn" type="submit"  >Next</button>
+</form>
+    </ion-grid>
 </ion-content>

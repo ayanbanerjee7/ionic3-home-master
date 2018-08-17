@@ -39,7 +39,20 @@
         color: #007ac9;
         cursor: pointer;
     } 
-    
+    .text-input-ios, .text-input-md{
+        padding:5px;
+    }
+    ion-icon {
+        display: inline-block;
+        background-color: #FF6319;
+        height: 30px;
+        width: 30px;
+        color: #fff;
+        border-radius: 100%;
+        padding: 9px 9px 9px 10px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 }
 
 

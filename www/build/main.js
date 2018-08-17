@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 109:
+/***/ 110:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +13,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 109;
+webpackEmptyAsyncContext.id = 110;
 
 /***/ }),
 
-/***/ 150:
+/***/ 151:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -54,11 +54,11 @@ var map = {
 		0
 	],
 	"../pages/thankyou/thankyou.module": [
-		280,
+		281,
 		2
 	],
 	"../pages/whatelsepage/whatelsepage.module": [
-		281,
+		280,
 		1
 	]
 };
@@ -73,20 +73,21 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 150;
+webpackAsyncContext.id = 151;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 194:
+/***/ 195:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -100,37 +101,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl, datePicker, keyboard) {
+    function HomePage(nativeStorage, navCtrl, datePicker, keyboard) {
+        this.nativeStorage = nativeStorage;
         this.navCtrl = navCtrl;
         this.datePicker = datePicker;
         this.keyboard = keyboard;
+        this.policyObj = { dob: "", zip: "", lastName: "" };
     }
     HomePage.prototype.ngOnInit = function () {
-        this.today = "mm/dd/yyyy";
+        this.dobvalidation = false;
     };
     HomePage.prototype.loginWithPolicyNumber = function () {
         this.navCtrl.push('PolicynumsigninPage');
     };
-    HomePage.prototype.login = function () {
-        this.navCtrl.push('IntroPage');
+    HomePage.prototype.login = function (fval, fvalid) {
+        if (this.policyObj.dob == '') {
+            this.dobvalidation = true;
+        }
+        else {
+            this.dobvalidation = false;
+        }
+        if (fvalid) {
+            console.log(this.policyObj);
+            this.nativeStorage.clear();
+            this.navCtrl.push('IntroPage');
+        }
     };
     HomePage.prototype.openDatepicker = function () {
         var _this = this;
+        this.dobvalidation = false;
         this.keyboard.close();
         this.datePicker.show({
             date: new Date(),
             mode: 'date',
             androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT
         }).then(function (date) {
-            _this.today = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+            _this.policyObj.dob = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
         }, function (err) { return console.log('Error occurred while getting date: ', err); });
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="home-page" padding>\n  <ion-grid>\n  <ion-row justify-content-center class="top_title">\n  <ion-col col-12>\n   <h1>Welcome, homeowner</h1>\n   <p class="thanks_text">Thank you for trusting us with your home</p>\n   </ion-col>\n   </ion-row>\n   <form #f="ngForm" ngNativeValidate (ngSubmit)="login(f.value)">\n  <ion-row> \n  <ion-label>Policyholder Last Name</ion-label>\n  <ion-col col-12>\n  <ion-input required type="text" ></ion-input>\n  </ion-col>\n  </ion-row>\n  <ion-row>\n  <ion-col col-6>\n      <ion-label>Zip Code</ion-label>\n      <ion-input required type="text"></ion-input>\n  </ion-col>\n  <ion-col col-6>\n      <ion-label>Date of Birth</ion-label>\n      <ion-input disabled="true" type="text" name="DOB" (click)="openDatepicker()" [(ngModel)]="today" ng-readonly></ion-input>\n  </ion-col>\n  </ion-row>\n  <ion-row>\n  <p class="privacy-text">Or <a (onfocus)="loginWithPolicyNumber()">sign in using Policy Number</a></p>  \n  </ion-row>\n  <button col-12 ion-button color="secondary"  type="submit" >Agree and Continue</button>\n  </form>\n  <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>\n  <ion-row justify-content-center>\n          <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   \n  </ion-row>\n  \n  </ion-grid>\n  \n  </ion-content>\n'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="home-page" padding>\n  <ion-grid>\n  <ion-row justify-content-center class="top_title">\n  <ion-col col-12>\n   <h1>Welcome, homeowner</h1>\n   <p class="thanks_text">Thank you for trusting us with your home</p>\n   </ion-col>\n   </ion-row>\n   <form #f="ngForm" novalidate  (ngSubmit)="login(f.value, f.valid)">\n  <ion-row> \n  <ion-label>Policyholder Last Name</ion-label>\n  <ion-col col-12>\n  <ion-input required   name="lastName" required maxlength="20" type="text" #lastName=\'ngModel\' (ngModel)="policyObj.lastName=$event.target.value" ></ion-input>\n  <div *ngIf="lastName.invalid && (lastName.touched || !lastName.pristine || f.submitted)" class="col-12 error nopadding">\n    \n  <small *ngIf="lastName.errors.required;then lastNameBlock"></small>\n  <small *ngIf="lastName.errors.maxlength;then lastNameBlock"></small>\n   <ng-template #lastNameBlock>\n    <small>\n      Please enter Last Name.\n    </small>\n  </ng-template>			\n</div>\n</ion-col>\n  </ion-row>\n  <ion-row>\n  <ion-col col-6>\n      <ion-label>Zip Code</ion-label>\n      <ion-input name="zip" required   pattern="^[0-9]{5}$" maxlength="5" minlength="5"type="text" #zip=\'ngModel\' (ngModel)="policyObj.zip=$event.target.value" ></ion-input>\n      <div *ngIf="zip.invalid && (zip.touched || !zip.pristine || f.submitted)" class="col-12 error nopadding">\n        \n      <small *ngIf="zip.errors.required;then zipBlock"></small>\n      <small *ngIf="zip.errors.maxlength;then zipLenthBlock"></small>\n      <small *ngIf="zip.errors.minlength;then zipLenthBlock"></small>\n      <small *ngIf="zip.errors.pattern; then zipcodeBlock"></small>\n       <ng-template #zipBlock>\n        <small>\n          Please enter Zip Code.\n        </small>\n      </ng-template>	\n      <ng-template #zipLenthBlock>\n        <small>\n          Please enter valid 5 digits zip code.\n        </small>\n      </ng-template>			\n    </div>\n    </ion-col>\n  <ion-col col-6>\n      <ion-label>Date of Birth</ion-label>\n      <ion-input disabled="true" required type="text" name="dob" (click)="openDatepicker()"  placeholder="mm/dd/yyyy" [(ngModel)]="policyObj.dob" ng-readonly></ion-input>\n      <div *ngIf="dobvalidation" class="col-12 error nopadding" >\n         <small>\n            Please select date of birth.\n          </small>\n       </div>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n  <p class="privacy-text">Or <a (click)="loginWithPolicyNumber()">sign in using Policy Number</a></p>  \n  </ion-row>\n  <button col-12 ion-button color="secondary"  type="submit" >Agree and Continue</button>\n  </form>\n  <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>\n  <ion-row justify-content-center>\n          <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   \n  </ion-row>\n  \n  </ion-grid>\n  \n  </ion-content>\n'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__["a" /* DatePicker */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__["a" /* Keyboard */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__["a" /* DatePicker */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__["a" /* Keyboard */]])
     ], HomePage);
     return HomePage;
 }());
@@ -161,14 +176,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keyboard__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_camera__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_native_storage__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_date_picker__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_keyboard__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_camera__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_native_storage__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_date_picker__ = __webpack_require__(196);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -186,18 +202,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */]
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_6__angular_forms__["d" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/allphotos/allphotos.module#AllphotosPageModule', name: 'AllphotosPage', segment: 'allphotos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/basicinfo/basicinfo.module#BasicinfoPageModule', name: 'BasicinfoPage', segment: 'basicinfo', priority: 'low', defaultHistory: [] },
@@ -207,23 +226,23 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/policynumsignin/policynumsignin.module#PolicynumsigninPageModule', name: 'PolicynumsigninPage', segment: 'policynumsignin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/submitphotos/submitphotos.module#SubmitphotosPageModule', name: 'SubmitphotosPage', segment: 'submitphotos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/takeaphoto/takeaphoto.module#TakeaphotoPageModule', name: 'TakeaphotoPage', segment: 'takeaphoto', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/thankyou/thankyou.module#ThankyouPageModule', name: 'ThankyouPage', segment: 'thankyou', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/whatelsepage/whatelsepage.module#WhatelsepagePageModule', name: 'WhatelsepagePage', segment: 'whatelsepage', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/whatelsepage/whatelsepage.module#WhatelsepagePageModule', name: 'WhatelsepagePage', segment: 'whatelsepage', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/thankyou/thankyou.module#ThankyouPageModule', name: 'ThankyouPage', segment: 'thankyou', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */]
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_8__ionic_native_camera__["a" /* Camera */],
-                __WEBPACK_IMPORTED_MODULE_9__ionic_native_native_storage__["a" /* NativeStorage */],
-                __WEBPACK_IMPORTED_MODULE_10__ionic_native_date_picker__["a" /* DatePicker */],
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+                __WEBPACK_IMPORTED_MODULE_9__ionic_native_camera__["a" /* Camera */],
+                __WEBPACK_IMPORTED_MODULE_10__ionic_native_native_storage__["a" /* NativeStorage */],
+                __WEBPACK_IMPORTED_MODULE_11__ionic_native_date_picker__["a" /* DatePicker */],
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_keyboard__["a" /* Keyboard */]
             ]
         })
@@ -242,9 +261,9 @@ var AppModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -270,9 +289,9 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());

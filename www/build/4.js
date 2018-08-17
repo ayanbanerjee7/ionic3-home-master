@@ -27,7 +27,7 @@ var PolicynumsigninPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__policynumsignin__["a" /* PolicynumsigninPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__policynumsignin__["a" /* PolicynumsigninPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__policynumsignin__["a" /* PolicynumsigninPage */]),
             ],
         })
     ], PolicynumsigninPageModule);
@@ -70,14 +70,17 @@ var PolicynumsigninPage = /** @class */ (function () {
     PolicynumsigninPage.prototype.loginWithPersonalInfo = function () {
         this.navCtrl.popToRoot();
     };
-    PolicynumsigninPage.prototype.login = function () {
-        this.navCtrl.push('BasicinfoPage');
+    PolicynumsigninPage.prototype.login = function (fval, fvalid) {
+        console.log(fval);
+        if (fvalid) {
+            this.navCtrl.push('BasicinfoPage');
+        }
     };
     PolicynumsigninPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-policynumsignin',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\policynumsignin\policynumsignin.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="home-page" padding>\n  <ion-grid>\n  <ion-row justify-content-center class="top_title">\n  <ion-col col-12>\n   <h1>Welcome, homeowner</h1>\n   <p class="thanks_text">Thank you for trusting us with your home</p>\n   </ion-col>\n   </ion-row>\n  <ion-row> \n  \n  <ion-col col-10>\n  <ion-input required type="text" placeholder="Policy Number" ></ion-input>\n  </ion-col>\n  <ion-col col-2>\n    <div><p>?</p></div>\n  </ion-col>\n  </ion-row>\n  \n  <ion-row>\n  <p class="privacy-text">Or <a (click)="loginWithPersonalInfo()">sign in using personal info</a></p>  \n  </ion-row>\n  <button ion-button color="secondary" >Agree and Continue</button>\n  <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>\n  <ion-row justify-content-center>\n      <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   \n</ion-row>\n\n</ion-grid>\n  \n  </ion-content>\n'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\policynumsignin\policynumsignin.html"*/,
+            selector: 'page-policynumsignin',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\policynumsignin\policynumsignin.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="home-page" padding>\n  <ion-grid>\n  <ion-row justify-content-center class="top_title">\n  <ion-col col-12>\n   <h1>Welcome, homeowner</h1>\n   <p class="thanks_text">Thank you for trusting us with your home</p>\n   </ion-col>\n   </ion-row>\n   <form #f="ngForm" novalidate  (ngSubmit)="login(f.value, f.valid)">\n  <ion-row> \n   <ion-col col-10>\n  <ion-input type="text" class="form-control" name="policyNumber" \n  #policyNumber="ngModel" [(ngModel)]="user" \n  required maxlength="14" minlength="14" placeholder="Policy Number" ></ion-input>\n \n  <div *ngIf="policyNumber.invalid && (policyNumber.touched || !policyNumber.pristine || f.submitted)" class="col-lg-12 error nopadding">\n    \n  <small *ngIf="policyNumber.errors.required;then policyNumberBlock"></small>\n  <small *ngIf="policyNumber.errors.maxlength;then policyNumberBlock"></small>\n  <small *ngIf="policyNumber.errors.minlength;then policyNumberBlock"></small>\n  <ng-template #policyNumberBlock>\n    <small>\n      Please enter a valid policy number.\n    </small>\n  </ng-template>			\n</div>\n  </ion-col>\n  <ion-col col-2>\n      <ion-icon  ios="ios-help" md="md-help"></ion-icon>\n  </ion-col>\n  </ion-row>\n  \n  <ion-row>\n  <p class="privacy-text">Or <a (click)="loginWithPersonalInfo()">sign in using personal info</a></p>  \n  </ion-row>\n  <button  type="submit" ion-button color="secondary" >Agree and Continue</button>\n   </form>\n  <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>\n  <ion-row justify-content-center>\n      <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   \n</ion-row>\n\n</ion-grid>\n  \n  </ion-content>\n'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\policynumsignin\policynumsignin.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], PolicynumsigninPage);
     return PolicynumsigninPage;
 }());

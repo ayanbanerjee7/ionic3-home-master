@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the WhatelsepagePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AlertController } from 'ionic-angular';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @IonicPage()
 @Component({
@@ -29,7 +24,8 @@ export class WhatelsepagePage {
     woodStove:false
 
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+ 
+  constructor(public nativeStorage: NativeStorage,private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -46,5 +42,32 @@ export class WhatelsepagePage {
       this.checkboxObj[event]=true;
     }
   
+    }
+    whatElseItems(f){
+      console.log(f);
+      if(Object.keys(f).length== 0){
+        let alert = this.alertCtrl.create({
+          title: 'You have not selected any items',
+          subTitle: 'Wish to Continue ?',
+          buttons: [{
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Retake clicked');
+            }
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              this.navCtrl.push('AllphotosPage');
+             }
+          }]
+        });
+        alert.present();
+      }
+     if(Object.keys(f).length > 0){
+      this.nativeStorage.setItem('otherHomeProperties',f);
+        this.navCtrl.push('AllphotosPage') 
+      }
     }
 }

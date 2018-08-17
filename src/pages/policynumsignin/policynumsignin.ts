@@ -21,8 +21,12 @@ export class PolicynumsigninPage {
   loginWithPersonalInfo(){
     this.navCtrl.popToRoot();
    }
-   login(){
-    this.navCtrl.push('BasicinfoPage') 
+   login(fval, fvalid){
+     console.log(fval);
+     if(fvalid) {
+      this.navCtrl.push('BasicinfoPage') 
+     }
+    
   }
 
 }

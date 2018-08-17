@@ -13,20 +13,35 @@
    <p class="thanks_text">Thank you for trusting us with your home</p>
    </ion-col>
    </ion-row>
+   <form #f="ngForm" novalidate  (ngSubmit)="login(f.value, f.valid)">
   <ion-row> 
-  
-  <ion-col col-10>
-  <ion-input required type="text" placeholder="Policy Number" ></ion-input>
+   <ion-col col-10>
+  <ion-input type="text" class="form-control" name="policyNumber" 
+  #policyNumber="ngModel" [(ngModel)]="user" 
+  required maxlength="14" minlength="14" placeholder="Policy Number" ></ion-input>
+ 
+  <div *ngIf="policyNumber.invalid && (policyNumber.touched || !policyNumber.pristine || f.submitted)" class="col-lg-12 error nopadding">
+    
+  <small *ngIf="policyNumber.errors.required;then policyNumberBlock"></small>
+  <small *ngIf="policyNumber.errors.maxlength;then policyNumberBlock"></small>
+  <small *ngIf="policyNumber.errors.minlength;then policyNumberBlock"></small>
+  <ng-template #policyNumberBlock>
+    <small>
+      Please enter a valid policy number.
+    </small>
+  </ng-template>			
+</div>
   </ion-col>
   <ion-col col-2>
-    <div><p>?</p></div>
+      <ion-icon  ios="ios-help" md="md-help"></ion-icon>
   </ion-col>
   </ion-row>
   
   <ion-row>
   <p class="privacy-text">Or <a (click)="loginWithPersonalInfo()">sign in using personal info</a></p>  
   </ion-row>
-  <button ion-button color="secondary" >Agree and Continue</button>
+  <button  type="submit" ion-button color="secondary" >Agree and Continue</button>
+   </form>
   <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>
   <ion-row justify-content-center>
       <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   

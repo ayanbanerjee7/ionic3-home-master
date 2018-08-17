@@ -19,3 +19,32 @@
     font-weight:100; 
     text-align: center;
 }
+.button-md, .button-ios {
+    width:100%;
+    height: 5rem;
+    font-size: 2rem;
+    text-transform: none;
+}
+.toolbar-md, .toolbar-ios {
+    min-height: 65px;
+}
+.error {
+    color:red;
+}
+.checkbox-md .checkbox-checked {
+ border-radius: 50%;
+}
+.alert-md .alert-title {
+    font-size: 15px;
+}
+.alert-ios .alert-title {
+    font-size: 15px;
+}
+.alert-md .alert-sub-title {
+    font-size: 13px;
+    margin-top: 10px;
+}
+.alert-ios .alert-sub-title {
+    font-size: 13px;
+    margin-top: 10px;
+}

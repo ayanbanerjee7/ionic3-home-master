@@ -14,25 +14,57 @@
    <p class="thanks_text">Thank you for trusting us with your home</p>
    </ion-col>
    </ion-row>
-   <form #f="ngForm" ngNativeValidate (ngSubmit)="login(f.value)">
+   <form #f="ngForm" novalidate  (ngSubmit)="login(f.value, f.valid)">
   <ion-row> 
   <ion-label>Policyholder Last Name</ion-label>
   <ion-col col-12>
-  <ion-input required type="text" ></ion-input>
-  </ion-col>
+  <ion-input required   name="lastName" required maxlength="20" type="text" #lastName='ngModel' (ngModel)="policyObj.lastName=$event.target.value" ></ion-input>
+  <div *ngIf="lastName.invalid && (lastName.touched || !lastName.pristine || f.submitted)" class="col-12 error nopadding">
+    
+  <small *ngIf="lastName.errors.required;then lastNameBlock"></small>
+  <small *ngIf="lastName.errors.maxlength;then lastNameBlock"></small>
+   <ng-template #lastNameBlock>
+    <small>
+      Please enter Last Name.
+    </small>
+  </ng-template>			
+</div>
+</ion-col>
   </ion-row>
   <ion-row>
   <ion-col col-6>
       <ion-label>Zip Code</ion-label>
-      <ion-input required type="text"></ion-input>
-  </ion-col>
+      <ion-input name="zip" required   pattern="^[0-9]{5}$" maxlength="5" minlength="5"type="text" #zip='ngModel' (ngModel)="policyObj.zip=$event.target.value" ></ion-input>
+      <div *ngIf="zip.invalid && (zip.touched || !zip.pristine || f.submitted)" class="col-12 error nopadding">
+        
+      <small *ngIf="zip.errors.required;then zipBlock"></small>
+      <small *ngIf="zip.errors.maxlength;then zipLenthBlock"></small>
+      <small *ngIf="zip.errors.minlength;then zipLenthBlock"></small>
+      <small *ngIf="zip.errors.pattern; then zipcodeBlock"></small>
+       <ng-template #zipBlock>
+        <small>
+          Please enter Zip Code.
+        </small>
+      </ng-template>	
+      <ng-template #zipLenthBlock>
+        <small>
+          Please enter valid 5 digits zip code.
+        </small>
+      </ng-template>			
+    </div>
+    </ion-col>
   <ion-col col-6>
       <ion-label>Date of Birth</ion-label>
-      <ion-input disabled="true" type="text" name="DOB" (click)="openDatepicker()" [(ngModel)]="today" ng-readonly></ion-input>
-  </ion-col>
+      <ion-input disabled="true" required type="text" name="dob" (click)="openDatepicker()"  placeholder="mm/dd/yyyy" [(ngModel)]="policyObj.dob" ng-readonly></ion-input>
+      <div *ngIf="dobvalidation" class="col-12 error nopadding" >
+         <small>
+            Please select date of birth.
+          </small>
+       </div>
+    </ion-col>
   </ion-row>
   <ion-row>
-  <p class="privacy-text">Or <a (onfocus)="loginWithPolicyNumber()">sign in using Policy Number</a></p>  
+  <p class="privacy-text">Or <a (click)="loginWithPolicyNumber()">sign in using Policy Number</a></p>  
   </ion-row>
   <button col-12 ion-button color="secondary"  type="submit" >Agree and Continue</button>
   </form>

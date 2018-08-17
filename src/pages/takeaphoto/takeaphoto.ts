@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { NativeStorage } from '@ionic-native/native-storage';
 import {util} from '../../utils/util';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the TakeaphotoPage page.
  *
@@ -21,10 +22,12 @@ export class TakeaphotoPage {
   photo_type;
   photo_thumbnail;
   photoId = null;
+  editPhoto;
   taken_photo :string;
-    constructor(public navCtrl: NavController, public camera: Camera, public nativeStorage: NativeStorage, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public camera: Camera, public nativeStorage: NativeStorage, public navParams: NavParams,private alertCtrl: AlertController) {
      
       this.photoId = this.navParams.get('photoId');
+      this.editPhoto=this.navParams.get('editPhoto');
       //alert(this.photoId);
     }
   
@@ -49,7 +52,12 @@ export class TakeaphotoPage {
      tipsJson.forEach(data => {
         this.title_text=data[this.photo_type].title;
         this.tip_text=data[this.photo_type].tip;
-        this.photo_thumbnail=this.photo_type;
+       
+        if (this.photo_type.includes('bedRoom') || this.photo_type.includes('bathRoom')) {
+          this.photo_thumbnail='bedRoom';
+        }else {
+          this.photo_thumbnail=this.photo_type;
+        }
        });
        this.nativeStorage.getItem(this.photo_type).then(data => 
         this.taken_photo = data, 
@@ -63,15 +71,41 @@ export class TakeaphotoPage {
         this.imageURL = 'data:image/jpeg;base64,'+imageData;
         this.photos.push(this.imageURL);
         this.nativeStorage.setItem(this.photoId,this.imageURL).then(() => 
-        this.taken_photo=this.imageURL ,
-         error=>alert("error"));
+        {this.taken_photo=this.imageURL; 
+         },
+         error=>console.log("error"));
   
         //let m = encodeURIComponent(this.imageURL).match(/%[89ABab]/g);
         //let size = this.imageURL.length + (m ? m.length : 0);
   
         //alert(this.imageURL);
         
+        let alert = this.alertCtrl.create({
+          title: 'Confirm Photo?',
+          subTitle: 'Please Confirm',
+          buttons: [{
+            text: 'Retake',
+            role: 'cancel',
+            handler: () => {
+              console.log('Retake clicked');
+              
+            }
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              if( this.editPhoto==='Yes') {
+                this.navCtrl.push('SubmitphotosPage');
+              } else{
+                this.navCtrl.push('AllphotosPage');
+              }
+            }
+          }]
+        });
+        alert.present();
+      
         this.photos.reverse();
+        
       }, (err) => {
          console.log(err);
       });
@@ -87,11 +121,38 @@ export class TakeaphotoPage {
          this.imageURL = 'data:image/jpeg;base64,'+imageData;
          this.photos.push(this.imageURL);
          this.nativeStorage.setItem(this.photoId,this.imageURL).then(() => 
-         this.taken_photo=this.imageURL, error=>alert("error"));
+         {
+          this.taken_photo=this.imageURL;
+          
+        }, 
+          error=>console.log("error"));
          let m = encodeURIComponent(this.imageURL).match(/%[89ABab]/g);
         let size = this.imageURL.length + (m ? m.length : 0);
-        
-        alert(size / 1000);
+       
+        let alert = this.alertCtrl.create({
+          title: 'Confirm Photo?',
+          subTitle: 'Please Confirm',
+          buttons: [{
+            text: 'Retake',
+            role: 'cancel',
+            handler: () => {
+              console.log('Retake clicked');
+            }
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              console.log('Confirm clicked');
+              if( this.editPhoto==='Yes') {
+                this.navCtrl.push('SubmitphotosPage');
+              } else {
+                this.navCtrl.push('AllphotosPage');
+              }
+            }
+          }]
+        });
+        alert.present();
+       
         }, (err) => {
          console.log(err);
        });

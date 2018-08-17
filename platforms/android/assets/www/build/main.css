@@ -25683,6 +25683,43 @@ ion-navbar.toolbar {
   text-align: center;
 }
 
+.button-md, .button-ios {
+  width: 100%;
+  height: 5rem;
+  font-size: 2rem;
+  text-transform: none;
+}
+
+.toolbar-md, .toolbar-ios {
+  min-height: 65px;
+}
+
+.error {
+  color: red;
+}
+
+.checkbox-md .checkbox-checked {
+  border-radius: 50%;
+}
+
+.alert-md .alert-title {
+  font-size: 15px;
+}
+
+.alert-ios .alert-title {
+  font-size: 15px;
+}
+
+.alert-md .alert-sub-title {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.alert-ios .alert-sub-title {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
 page-allphotos {
   font-family: 'Whitney-Medium', 'Whitney Medium', 'Whitney';
   color: #4D4D4F;
@@ -25783,11 +25820,13 @@ page-basicinfo ion-checkbox {
 .home-page .top_title .thanks_text {
   font-size: 16px;
   margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .home-page ion-label {
   font-size: 13px;
   margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .home-page ion-input {
@@ -25811,18 +25850,8 @@ page-basicinfo ion-checkbox {
   cursor: pointer;
 }
 
-.home-page .dateclass {
-  width: 100%;
-}
-
-.home-page .dateclass.placeholderclass::before {
-  width: 100%;
-  content: attr(placeholder);
-}
-
-.home-page .dateclass.placeholderclass:hover::before {
-  width: 0%;
-  content: "";
+.home-page .error {
+  color: red;
 }
 
 page-intro {
@@ -25841,6 +25870,18 @@ page-intro p {
 
 page-intro .got-it-btn {
   width: 100%;
+}
+
+page-intro .title {
+  font-weight: 500;
+  font-size: 30px;
+  color: #007AC9;
+  text-align: center;
+  line-height: 27px;
+}
+
+page-intro .title-row {
+  margin-top: 60px;
 }
 
 .home-page {
@@ -25890,6 +25931,22 @@ page-intro .got-it-btn {
 .home-page a {
   color: #007ac9;
   cursor: pointer;
+}
+
+.home-page .text-input-ios, .home-page .text-input-md {
+  padding: 5px;
+}
+
+.home-page ion-icon {
+  display: inline-block;
+  background-color: #FF6319;
+  height: 30px;
+  width: 30px;
+  color: #fff;
+  border-radius: 100%;
+  padding: 9px 9px 9px 10px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 page-submitphotos .submit-page {

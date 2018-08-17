@@ -27,7 +27,7 @@ var GalleryPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__gallery__["a" /* GalleryPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__gallery__["a" /* GalleryPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__gallery__["a" /* GalleryPage */]),
             ],
         })
     ], GalleryPageModule);
@@ -45,7 +45,7 @@ var GalleryPageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GalleryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -79,9 +79,9 @@ var GalleryPage = /** @class */ (function () {
     };
     GalleryPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-gallery',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\gallery\gallery.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Plymouth Rock Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  \n  \n  <img [src]="bedroomImage" *ngIf="bedroomImage" class=\'col-sm-3\'/>\n  <img [src]="outsideImage" *ngIf="outsideImage" class=\'col-sm-3\'/>\n  <img [src]="diningImage" *ngIf="diningImage" class=\'col-sm-3\'/>\n\n\n  <button ion-button color="primary" (click)="submitGallery()"> Submit All </button>\n\n</ion-content>\n'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\gallery\gallery.html"*/,
+            selector: 'page-gallery',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\gallery\gallery.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n      Plymouth Rock Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  \n  \n  <img [src]="bedroomImage" *ngIf="bedroomImage" class=\'col-sm-3\'/>\n  <img [src]="outsideImage" *ngIf="outsideImage" class=\'col-sm-3\'/>\n  <img [src]="diningImage" *ngIf="diningImage" class=\'col-sm-3\'/>\n\n\n  <button ion-button color="primary" (click)="submitGallery()"> Submit All </button>\n\n</ion-content>\n'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\gallery\gallery.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
     ], GalleryPage);
     return GalleryPage;
 }());
