@@ -16,26 +16,26 @@ export class util {
         "tip":"Get the side of your house by standing at the front corner, making sure to get as much of the side as possible"
     },
     "masterbedRoom": {
-        "title":"Bedroom",
+        "title":"Master Bedroom",
         "tip":"Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
     },
     "bedRoom2": {
-        "title":"Bedroom",
+        "title":"Bedroom2",
         "tip":"Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
     },"bedRoom3": {
-        "title":"Bedroom",
+        "title":"Bedroom3",
         "tip":"Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
     },
     "masterbathRoom": {
-        "title":"Bathroom",
+        "title":"Master Bathroom",
         "tip":"Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
     },
     "bathRoom2": {
-        "title":"Bathroom",
+        "title":"Bathroom2",
         "tip":"Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
     },
     "bathRoom3": {
-        "title":"Bathroom",
+        "title":"Bathroom3",
         "tip":"Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
     }
     }
