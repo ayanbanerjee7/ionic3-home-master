@@ -77,9 +77,10 @@ var IntroPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-intro',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\intro\intro.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content  padding>\n  <ion-grid>\n    <ion-row justify-content-center>\n      <ion-img  style="width:112px; height: 117px; margin-top:32px" src="assets/imgs/home_in_hand.png"></ion-img>\n  </ion-row>\n <ion-row  class="title-row"justify-content-center>\n<p class="title">125 Main Street</p>\n<ion-row  justify-content-center>\n<p>Photos of your home are necessary in order to easily reimburse you in the event of a claim. Answering the following questions will tell us which photos are needed.</p>\n</ion-row>\n</ion-row>\n<ion-row>\n    <button  (click)="goToNextPage()" ion-button color="secondary" class="got-it-btn" >Got it</button>\n</ion-row>\n</ion-grid>\n  </ion-content>\n'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\intro\intro.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
     ], IntroPage);
     return IntroPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=intro.js.map

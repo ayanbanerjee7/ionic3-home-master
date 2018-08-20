@@ -51,11 +51,15 @@ export class SubmitphotosPage {
         if (k.match(/^(noOfBedRooms|noOfBathRooms|primaryHeatSource|otherHomeProperties)$/)) {
             // do nothing
         } else {
-          this.imagesObj={
-            'key':k,
-            'imagedata': data
-            }
-            this.images.push(this.imagesObj);
+          // this includes logic needs to be improved added this to avoid IOS default native data 
+          if(data.includes('data:image/jpeg;base64')) {
+            this.imagesObj={
+              'key':k,
+              'imagedata': data
+              }
+              this.images.push(this.imagesObj);
+          }
+          
         }
           })
       ));

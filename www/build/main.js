@@ -145,9 +145,10 @@ var HomePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="home-page" padding>\n  <ion-grid>\n  <ion-row justify-content-center class="top_title">\n  <ion-col col-12>\n   <h1>Welcome, homeowner</h1>\n   <p class="thanks_text">Thank you for trusting us with your home</p>\n   </ion-col>\n   </ion-row>\n   <form #f="ngForm" novalidate  (ngSubmit)="login(f.value, f.valid)">\n  <ion-row> \n  <ion-label>Policyholder Last Name</ion-label>\n  <ion-col col-12>\n  <ion-input required   name="lastName" required maxlength="20" type="text" #lastName=\'ngModel\' (ngModel)="policyObj.lastName=$event.target.value" ></ion-input>\n  <div *ngIf="lastName.invalid && (lastName.touched || !lastName.pristine || f.submitted)" class="col-12 error nopadding">\n    \n  <small *ngIf="lastName.errors.required;then lastNameBlock"></small>\n  <small *ngIf="lastName.errors.maxlength;then lastNameBlock"></small>\n   <ng-template #lastNameBlock>\n    <small>\n      Please enter Last Name.\n    </small>\n  </ng-template>			\n</div>\n</ion-col>\n  </ion-row>\n  <ion-row>\n  <ion-col col-6>\n      <ion-label>Zip Code</ion-label>\n      <ion-input name="zip" required   pattern="^[0-9]{5}$" maxlength="5" minlength="5"type="text" #zip=\'ngModel\' (ngModel)="policyObj.zip=$event.target.value" ></ion-input>\n      <div *ngIf="zip.invalid && (zip.touched || !zip.pristine || f.submitted)" class="col-12 error nopadding">\n        \n      <small *ngIf="zip.errors.required;then zipBlock"></small>\n      <small *ngIf="zip.errors.maxlength;then zipLenthBlock"></small>\n      <small *ngIf="zip.errors.minlength;then zipLenthBlock"></small>\n      <small *ngIf="zip.errors.pattern; then zipcodeBlock"></small>\n       <ng-template #zipBlock>\n        <small>\n          Please enter Zip Code.\n        </small>\n      </ng-template>	\n      <ng-template #zipLenthBlock>\n        <small>\n          Please enter valid 5 digits zip code.\n        </small>\n      </ng-template>			\n    </div>\n    </ion-col>\n  <ion-col col-6>\n      <ion-label>Date of Birth</ion-label>\n      <ion-input disabled="true" required type="text" name="dob" (click)="openDatepicker()"  placeholder="mm/dd/yyyy" [(ngModel)]="policyObj.dob" ng-readonly></ion-input>\n      <div *ngIf="dobvalidation" class="col-12 error nopadding" >\n         <small>\n            Please select date of birth.\n          </small>\n       </div>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n  <p class="privacy-text">Or <a (click)="loginWithPolicyNumber()">sign in using Policy Number</a></p>  \n  </ion-row>\n  <button col-12 ion-button color="secondary"  type="submit" >Agree and Continue</button>\n  </form>\n  <p class="privacy-text">By agreeing, you accept our <a>terms and conditions</a></p>\n  <ion-row justify-content-center>\n          <ion-img style="width:75px; height: 75px; " src="assets/imgs/homepage_home.png"></ion-img>   \n  </ion-row>\n  \n  </ion-grid>\n  \n  </ion-content>\n'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__["a" /* DatePicker */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__["a" /* Keyboard */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__["a" /* DatePicker */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_date_picker__["a" /* DatePicker */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__["a" /* Keyboard */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_keyboard__["a" /* Keyboard */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -211,9 +212,10 @@ var SubmitphotosProvider = /** @class */ (function () {
     };
     SubmitphotosProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
     ], SubmitphotosProvider);
     return SubmitphotosProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=submitphotos.js.map
@@ -432,9 +434,10 @@ var LoginProvider = /** @class */ (function () {
     };
     LoginProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object])
     ], LoginProvider);
     return LoginProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=login.js.map
