@@ -12,6 +12,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { DatePicker } from '@ionic-native/date-picker';
 import { SubmitphotosProvider } from '../providers/submitphotos/submitphotos';
 import { LoginProvider } from '../providers/login/login';
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
@@ -19,6 +20,7 @@ import { LoginProvider } from '../providers/login/login';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule.forRoot(MyApp)
