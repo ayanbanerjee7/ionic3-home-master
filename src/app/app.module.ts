@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { Camera } from '@ionic-native/camera';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { DatePicker } from '@ionic-native/date-picker';
+import { SubmitphotosProvider } from '../providers/submitphotos/submitphotos';
+import { LoginProvider } from '../providers/login/login';
 @NgModule({
   declarations: [
     MyApp,
@@ -33,7 +35,9 @@ import { DatePicker } from '@ionic-native/date-picker';
     Camera,
     NativeStorage,
     DatePicker,
-    Keyboard
+    Keyboard,
+    SubmitphotosProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}

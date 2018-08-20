@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 279:
+/***/ 289:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TakeaphotoPageModule", function() { return TakeaphotoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__takeaphoto__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__takeaphoto__ = __webpack_require__(299);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,16 +38,16 @@ var TakeaphotoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 289:
+/***/ 299:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TakeaphotoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_util__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_util__ = __webpack_require__(300);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -204,7 +204,7 @@ var TakeaphotoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 290:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -228,26 +228,26 @@ var util = /** @class */ (function () {
                     "tip": "Get the side of your house by standing at the front corner, making sure to get as much of the side as possible"
                 },
                 "masterbedRoom": {
-                    "title": "Bedroom",
+                    "title": "Master Bedroom",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "bedRoom2": {
-                    "title": "Bedroom",
+                    "title": "Bedroom2",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 }, "bedRoom3": {
-                    "title": "Bedroom",
+                    "title": "Bedroom3",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "masterbathRoom": {
-                    "title": "Bathroom",
+                    "title": "Master Bathroom",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "bathRoom2": {
-                    "title": "Bathroom",
+                    "title": "Bathroom2",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "bathRoom3": {
-                    "title": "Bathroom",
+                    "title": "Bathroom3",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 }
             }

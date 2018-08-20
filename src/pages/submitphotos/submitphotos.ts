@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
-
-/**
- * Generated class for the SubmitphotosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import  {SubmitphotosProvider} from '../../providers/submitphotos/submitphotos';
 
 @IonicPage()
 @Component({
@@ -17,7 +11,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 export class SubmitphotosPage {
  
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public nativeStorage: NativeStorage) {
+  constructor(public submitphotos:SubmitphotosProvider, public navCtrl: NavController, public navParams: NavParams,public nativeStorage: NativeStorage) {
   }
   images= [];
   keys=[];
@@ -91,6 +85,17 @@ export class SubmitphotosPage {
       }
     };
    console.log(finalObj);
+  //  //submit photo service
+  //  this.submitphotos.submitPhotos(finalObj).subscribe(
+  //   result => {
+  //     if (result) {
+       
+  //     }
+  //   },
+  //   (error) => {
+  //     console.log("Error...." + error);
+  //   }
+  // );
     this.navCtrl.push('ThankyouPage');
   // this.nativeStorage.clear();
   }

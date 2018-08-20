@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 278:
+/***/ 288:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SubmitphotosPageModule", function() { return SubmitphotosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submitphotos__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__submitphotos__ = __webpack_require__(298);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,14 +38,15 @@ var SubmitphotosPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 288:
+/***/ 298:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubmitphotosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_submitphotos_submitphotos__ = __webpack_require__(203);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,14 +59,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the SubmitphotosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 var SubmitphotosPage = /** @class */ (function () {
-    function SubmitphotosPage(navCtrl, navParams, nativeStorage) {
+    function SubmitphotosPage(submitphotos, navCtrl, navParams, nativeStorage) {
+        this.submitphotos = submitphotos;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.nativeStorage = nativeStorage;
@@ -135,6 +132,16 @@ var SubmitphotosPage = /** @class */ (function () {
             }
         };
         console.log(finalObj);
+        //  //submit photo service
+        //  this.submitphotos.submitPhotos(finalObj).subscribe(
+        //   result => {
+        //     if (result) {
+        //     }
+        //   },
+        //   (error) => {
+        //     console.log("Error...." + error);
+        //   }
+        // );
         this.navCtrl.push('ThankyouPage');
         // this.nativeStorage.clear();
     };
@@ -142,7 +149,7 @@ var SubmitphotosPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-submitphotos',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\submitphotos\submitphotos.html"*/'<ion-header>\n    <ion-navbar color="primary">\n      <ion-title>\n        <b>Plymouth Rock</b> Home Inspector\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n\n<ion-content class="submit-page" padding>\n     <ion-grid>\n    <ion-row justify-content-center>\n     <p class="alldone-text">All done. Good job!</p> \n     <p class="retake-text">Retake any photo or submit your inventory now</p>\n    </ion-row>\n    <ion-row justify-content-center>\n        <button ion-button color="secondary"  (click)="submitPhotos()"  expand="full">Submit Photos</button>  \n    </ion-row>\n    <ion-row class="gallery">\n    <ion-col col-4 *ngFor="let m of images">\n        <img (click)="editPhoto(m.key)" src="{{m.imagedata}}"/> \n   </ion-col>\n    </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\submitphotos\submitphotos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_submitphotos_submitphotos__["a" /* SubmitphotosProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
     ], SubmitphotosPage);
     return SubmitphotosPage;
 }());
