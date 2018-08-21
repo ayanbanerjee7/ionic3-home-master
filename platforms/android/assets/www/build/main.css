@@ -25792,11 +25792,16 @@ page-basicinfo p {
 }
 
 page-basicinfo .text {
-  margin-top: 7px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 page-basicinfo ion-checkbox {
-  margin-top: 8px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .home-page {
@@ -26122,11 +26127,16 @@ page-whatelsepage .sub-head-text {
 }
 
 page-whatelsepage .text {
-  margin-top: 7px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 page-whatelsepage ion-checkbox {
-  margin-top: 8px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 page-whatelsepage .add-border-color {

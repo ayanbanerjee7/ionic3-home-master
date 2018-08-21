@@ -38,7 +38,7 @@ export class TakeaphotoPage {
     photos: any;
     
     options : CameraOptions = {
-      quality:50,
+      quality:20,
       destinationType:this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType:this.camera.MediaType.PICTURE
@@ -97,7 +97,7 @@ export class TakeaphotoPage {
               if( this.editPhoto==='Yes') {
                 this.navCtrl.push('SubmitphotosPage');
               } else{
-                this.navCtrl.push('AllphotosPage');
+                this.navCtrl.push('AllphotosPage',{'photoId':this.photoId});
               }
             }
           }]
@@ -146,7 +146,7 @@ export class TakeaphotoPage {
               if( this.editPhoto==='Yes') {
                 this.navCtrl.push('SubmitphotosPage');
               } else {
-                this.navCtrl.push('AllphotosPage');
+                this.navCtrl.push('AllphotosPage',{'photoId':this.photoId});
               }
             }
           }]

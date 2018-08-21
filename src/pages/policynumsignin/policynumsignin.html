@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar hideBackButton color="primary">
     <ion-title>
       <b>Plymouth Rock</b> Home Inspector
     </ion-title>
@@ -13,6 +13,7 @@
    <p class="thanks_text">Thank you for trusting us with your home</p>
    </ion-col>
    </ion-row>
+   <p class="error" *ngIf="errorMsg">{{errorMsg}}</p>
    <form #f="ngForm" novalidate  (ngSubmit)="login(f.value, f.valid)">
   <ion-row> 
    <ion-col col-10>
@@ -36,7 +37,29 @@
       <ion-icon  ios="ios-help" md="md-help"></ion-icon>
   </ion-col>
   </ion-row>
-  
+  <ion-row>
+    <ion-col col-10>
+      
+      <ion-input name="zip" required  placeholder="Zip Code" pattern="^[0-9]{5}$" maxlength="5" minlength="5"type="text" #zip='ngModel' (ngModel)="policyObj.zip=$event.target.value" ></ion-input>
+      <div *ngIf="zip.invalid && (zip.touched || !zip.pristine || f.submitted)" class="col-12 error nopadding">
+        
+      <small *ngIf="zip.errors.required;then zipBlock"></small>
+      <small *ngIf="zip.errors.maxlength;then zipLenthBlock"></small>
+      <small *ngIf="zip.errors.minlength;then zipLenthBlock"></small>
+      <small *ngIf="zip.errors.pattern; then zipcodeBlock"></small>
+       <ng-template #zipBlock>
+        <small>
+          Please enter Zip Code.
+        </small>
+      </ng-template>	
+      <ng-template #zipLenthBlock>
+        <small>
+          Please enter valid 5 digits zip code.
+        </small>
+      </ng-template>			
+    </div>
+    </ion-col> 
+  </ion-row>
   <ion-row>
   <p class="privacy-text">Or <a (click)="loginWithPersonalInfo()">sign in using personal info</a></p>  
   </ion-row>

@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 279:
+/***/ 289:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TakeaphotoPageModule", function() { return TakeaphotoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__takeaphoto__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__takeaphoto__ = __webpack_require__(299);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,16 +38,16 @@ var TakeaphotoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 289:
+/***/ 299:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TakeaphotoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_util__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_util__ = __webpack_require__(300);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -78,7 +78,7 @@ var TakeaphotoPage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.photoId = null;
         this.options = {
-            quality: 50,
+            quality: 20,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE
@@ -137,7 +137,7 @@ var TakeaphotoPage = /** @class */ (function () {
                                 _this.navCtrl.push('SubmitphotosPage');
                             }
                             else {
-                                _this.navCtrl.push('AllphotosPage');
+                                _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
                             }
                         }
                     }]
@@ -181,7 +181,7 @@ var TakeaphotoPage = /** @class */ (function () {
                                 _this.navCtrl.push('SubmitphotosPage');
                             }
                             else {
-                                _this.navCtrl.push('AllphotosPage');
+                                _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
                             }
                         }
                     }]
@@ -193,9 +193,9 @@ var TakeaphotoPage = /** @class */ (function () {
     };
     TakeaphotoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-takeaphoto',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n  <ion-content class="all-photos-page" padding>\n    <ion-grid>\n      <ion-row class="frame-margin">\n          <div *ngIf="!taken_photo" id="frame" >\n              <div class="outline">\n               <div class="inner-border">\n                      <img style="width:70px; height: 65px;" src="assets/imgs/{{photo_thumbnail}}.png">\n              </div>   \n              </div>\n              </div> \n        <img *ngIf="taken_photo" class="taken-photo" src="{{taken_photo}}"/>\n      </ion-row>\n      <ion-row justify-content-center class="upload-btns">\n         <ion-img (click)="accessGallery()" style="width:60px; height: 60px; margin-right: 45px;" src="assets/imgs/gallery_btn.png"></ion-img>\n          <ion-img (click)="takePhoto()" style="width:65px; height: 65px;" src="assets/imgs/camera_icon.png"></ion-img>\n      </ion-row>\n    </ion-grid>\n    \n </ion-content> \n <ion-footer class="bottom-text">\n    <ion-toolbar>\n        <div><p class="title">{{title_text}}</p></div>\n        <div><p>{{tip_text}}</p></div>\n    </ion-toolbar>\n  </ion-footer>\n  \n  \n  \n  '/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/,
+            selector: 'page-takeaphoto',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/'<ion-header>\n  <ion-navbar hideBackButton color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n  <ion-content class="all-photos-page" padding>\n    <ion-grid>\n      <ion-row class="frame-margin">\n          <div *ngIf="!taken_photo" id="frame" >\n              <div class="outline">\n               <div class="inner-border">\n                      <img style="width:70px; height: 65px;" src="assets/imgs/{{photo_thumbnail}}.png">\n              </div>   \n              </div>\n              </div> \n        <img *ngIf="taken_photo" class="taken-photo" src="{{taken_photo}}"/>\n      </ion-row>\n      <ion-row justify-content-center class="upload-btns">\n         <ion-img (click)="accessGallery()" style="width:60px; height: 60px; margin-right: 45px;" src="assets/imgs/gallery_btn.png"></ion-img>\n          <ion-img (click)="takePhoto()" style="width:65px; height: 65px;" src="assets/imgs/camera_icon.png"></ion-img>\n      </ion-row>\n    </ion-grid>\n    \n </ion-content> \n <ion-footer class="bottom-text">\n    <ion-toolbar>\n        <div><p class="title">{{title_text}}</p></div>\n        <div><p>{{tip_text}}</p></div>\n    </ion-toolbar>\n  </ion-footer>\n  \n  \n  \n  '/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], TakeaphotoPage);
     return TakeaphotoPage;
 }());
@@ -204,7 +204,7 @@ var TakeaphotoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 290:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -228,26 +228,26 @@ var util = /** @class */ (function () {
                     "tip": "Get the side of your house by standing at the front corner, making sure to get as much of the side as possible"
                 },
                 "masterbedRoom": {
-                    "title": "Bedroom",
+                    "title": "Master Bedroom",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "bedRoom2": {
-                    "title": "Bedroom",
+                    "title": "Bedroom2",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 }, "bedRoom3": {
-                    "title": "Bedroom",
+                    "title": "Bedroom3",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "masterbathRoom": {
-                    "title": "Bathroom",
+                    "title": "Master Bathroom",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "bathRoom2": {
-                    "title": "Bathroom",
+                    "title": "Bathroom2",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 },
                 "bathRoom3": {
-                    "title": "Bathroom",
+                    "title": "Bathroom3",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 }
             }

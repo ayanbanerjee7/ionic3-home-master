@@ -72,12 +72,11 @@ var ThankyouPage = /** @class */ (function () {
     };
     ThankyouPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-thankyou',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\thankyou\thankyou.html"*/'<ion-header>\n    <ion-navbar color="primary">\n      <ion-title>\n        Plymouth Rock Home Inspector\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n\n<ion-content  class="thankyou-page" padding > \n    <ion-grid>\n        <ion-row justify-content-center>\n  <p class="title">A great big thank you!</p>\n  <p class="text">The information and photos that you\'ve provided will be reviewed by an underwriter. We want to make sure that you have the right amount of coverage for your home and belongings. If we have any questions or recommendations we\'ll be in touch with you.</p>\n</ion-row>\n<ion-row justify-content-center>\n  <button ion-button color="secondary" >Please send a copy of my report</button>\n</ion-row>\n</ion-grid>\n</ion-content>'/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\thankyou\thankyou.html"*/,
+            selector: 'page-thankyou',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\thankyou\thankyou.html"*/'<ion-header>\n    <ion-navbar hideBackButton color="primary">\n      <ion-title>\n        Plymouth Rock Home Inspector\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n\n<ion-content  class="thankyou-page" padding > \n    <ion-grid>\n        <ion-row justify-content-center>\n  <p class="title">A great big thank you!</p>\n  <p class="text">The information and photos that you\'ve provided will be reviewed by an underwriter. We want to make sure that you have the right amount of coverage for your home and belongings. If we have any questions or recommendations we\'ll be in touch with you.</p>\n</ion-row>\n<ion-row justify-content-center>\n  <button ion-button color="secondary" >Please send a copy of my report</button>\n</ion-row>\n</ion-grid>\n</ion-content>'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\thankyou\thankyou.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
     ], ThankyouPage);
     return ThankyouPage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=thankyou.js.map

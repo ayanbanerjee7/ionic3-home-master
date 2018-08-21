@@ -78,7 +78,7 @@ var TakeaphotoPage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.photoId = null;
         this.options = {
-            quality: 50,
+            quality: 20,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE
@@ -137,7 +137,7 @@ var TakeaphotoPage = /** @class */ (function () {
                                 _this.navCtrl.push('SubmitphotosPage');
                             }
                             else {
-                                _this.navCtrl.push('AllphotosPage');
+                                _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
                             }
                         }
                     }]
@@ -181,7 +181,7 @@ var TakeaphotoPage = /** @class */ (function () {
                                 _this.navCtrl.push('SubmitphotosPage');
                             }
                             else {
-                                _this.navCtrl.push('AllphotosPage');
+                                _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
                             }
                         }
                     }]
@@ -193,12 +193,11 @@ var TakeaphotoPage = /** @class */ (function () {
     };
     TakeaphotoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-takeaphoto',template:/*ion-inline-start:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n  <ion-content class="all-photos-page" padding>\n    <ion-grid>\n      <ion-row class="frame-margin">\n          <div *ngIf="!taken_photo" id="frame" >\n              <div class="outline">\n               <div class="inner-border">\n                      <img style="width:70px; height: 65px;" src="assets/imgs/{{photo_thumbnail}}.png">\n              </div>   \n              </div>\n              </div> \n        <img *ngIf="taken_photo" class="taken-photo" src="{{taken_photo}}"/>\n      </ion-row>\n      <ion-row justify-content-center class="upload-btns">\n         <ion-img (click)="accessGallery()" style="width:60px; height: 60px; margin-right: 45px;" src="assets/imgs/gallery_btn.png"></ion-img>\n          <ion-img (click)="takePhoto()" style="width:65px; height: 65px;" src="assets/imgs/camera_icon.png"></ion-img>\n      </ion-row>\n    </ion-grid>\n    \n </ion-content> \n <ion-footer class="bottom-text">\n    <ion-toolbar>\n        <div><p class="title">{{title_text}}</p></div>\n        <div><p>{{tip_text}}</p></div>\n    </ion-toolbar>\n  </ion-footer>\n  \n  \n  \n  '/*ion-inline-end:"C:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/,
+            selector: 'page-takeaphoto',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/'<ion-header>\n  <ion-navbar hideBackButton color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n  <ion-content class="all-photos-page" padding>\n    <ion-grid>\n      <ion-row class="frame-margin">\n          <div *ngIf="!taken_photo" id="frame" >\n              <div class="outline">\n               <div class="inner-border">\n                      <img style="width:70px; height: 65px;" src="assets/imgs/{{photo_thumbnail}}.png">\n              </div>   \n              </div>\n              </div> \n        <img *ngIf="taken_photo" class="taken-photo" src="{{taken_photo}}"/>\n      </ion-row>\n      <ion-row justify-content-center class="upload-btns">\n         <ion-img (click)="accessGallery()" style="width:60px; height: 60px; margin-right: 45px;" src="assets/imgs/gallery_btn.png"></ion-img>\n          <ion-img (click)="takePhoto()" style="width:65px; height: 65px;" src="assets/imgs/camera_icon.png"></ion-img>\n      </ion-row>\n    </ion-grid>\n    \n </ion-content> \n <ion-footer class="bottom-text">\n    <ion-toolbar>\n        <div><p class="title">{{title_text}}</p></div>\n        <div><p>{{tip_text}}</p></div>\n    </ion-toolbar>\n  </ion-footer>\n  \n  \n  \n  '/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], TakeaphotoPage);
     return TakeaphotoPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=takeaphoto.js.map

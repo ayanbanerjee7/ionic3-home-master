@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar color="primary">
+    <ion-navbar hideBackButton color="primary">
       <ion-title>
         <b>Plymouth Rock</b> Home Inspector
       </ion-title>
@@ -13,8 +13,10 @@
      <p class="retake-text">Retake any photo or submit your inventory now</p>
     </ion-row>
     <ion-row justify-content-center>
-        <button ion-button color="secondary"  (click)="submitPhotos()"  expand="full">Submit Photos</button>  
+        <button ion-button color="secondary"  (click)="uploadPhotos()"  expand="full">Submit Photos</button>  
     </ion-row>
+    <p class="error" *ngIf="uploadErrorMsg">{{uploadErrorMsg}}</p>
+   
     <ion-row class="gallery">
     <ion-col col-4 *ngFor="let m of images">
         <img (click)="editPhoto(m.key)" src="{{m.imagedata}}"/> 

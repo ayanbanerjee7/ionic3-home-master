@@ -13,18 +13,15 @@ export class LoginProvider {
     console.log('Hello LoginProvider Provider');
   }
   public login(obj: Object): Observable<any> {
-    console.log(obj);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    const url = "";
+    const url = "https://i7esfq8jwe.execute-api.us-east-1.amazonaws.com/default/eHome-Auth";
     
     return this.http
       .post(url, obj,options)
       .map((response: Response) => {
-        console.log("*************response");
-        console.log(response);
-        if (response) {
-          console.log(response);
+          if (response) {
+       
           return response.json();
         }
       })

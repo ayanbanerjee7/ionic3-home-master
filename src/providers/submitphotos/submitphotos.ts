@@ -12,11 +12,11 @@ export class SubmitphotosProvider {
   constructor(public http: Http) {
     console.log('Hello SubmitphotosProvider Provider');
   }
-  public submitPhotos(obj: Object): Observable<any> {
-    console.log(obj);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    const url = "";
+  public submitPhotos(token:String,obj: Object): Observable<any> {
+   // console.log(obj);
+    let headers = new Headers({ 'Content-Type': 'application/json','Authorizatio':token});
+    let options = new RequestOptions({ headers: headers});
+    const url = "https://g1yy9fddoh.execute-api.us-east-1.amazonaws.com/default/eHome-Photoupload";
     
     return this.http
       .post(url, obj,options)

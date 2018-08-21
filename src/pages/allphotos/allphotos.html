@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar hideBackButton color="primary">
     <ion-title>
      <b>Plymouth Rock</b> Home Inspector
     </ion-title>
@@ -10,20 +10,21 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12>
-    <p>These are the photos needed for your policy, tap to get started</p> 
+    <p *ngIf="!almostdone_text">These are the photos needed for your policy, tap to get started</p>
+    <p *ngIf="almostdone_text">{{almostdone_text}}</p> 
   </ion-col>
   </ion-row>
   <span class="exterior">
   <ion-row>
-  <ion-col  *ngIf="show_exteriorFront" col-5>
+  <ion-col  *ngIf="photosTaken.show_exteriorFront" col-5>
    <div (click)="takePhoto('exteriorFront')">Exterior: Front</div>
   </ion-col>
-  <ion-col  *ngIf="show_exteriorRight" col-7>
+  <ion-col  *ngIf="photosTaken.show_exteriorRight" col-7>
       <div (click)="takePhoto('exteriorRight')">Exterior: Right Side</div>  
      </ion-col>
   </ion-row>
   <ion-row >
-      <ion-col  *ngIf="show_exteriorLeft" col-7>
+      <ion-col  *ngIf="photosTaken.show_exteriorLeft" col-7>
        <div (click)="takePhoto('exteriorLeft')">Exterior: Left Side</div>
       </ion-col>
       <ion-col col-5>
@@ -52,13 +53,13 @@
          </ion-col>
       </ion-row> -->
       <ion-row >
-          <ion-col *ngIf="masterBath && masterBath_photo_taken" col-4>
+          <ion-col *ngIf="masterBath && photosTaken.show_masterbathRoom" col-4>
            <div (click)="takePhoto('masterbathRoom')" >Master Bath</div>
           </ion-col>
-          <ion-col *ngIf="bathRoom2 && bathRoom2_photo_taken" col-4>
+          <ion-col *ngIf="bathRoom2 && photosTaken.show_bathRoom2" col-4>
               <div (click)="takePhoto('bathRoom2')" >Bath two</div>  
              </ion-col>
-             <ion-col *ngIf="bathRoom3 && bathRoom3_photo_taken" col-4>
+             <ion-col *ngIf="bathRoom3 && photosTaken.show_bathRoom3" col-4>
                 <div (click)="takePhoto('bathRoom3')">Bath Three</div>  
                </ion-col>
           </ion-row>
@@ -66,15 +67,15 @@
               <!-- <ion-col col-5>
                <div>Family Room</div>
               </ion-col> -->
-              <ion-col *ngIf="masterBed && masterBed_photo_taken" col-7>
+              <ion-col *ngIf="masterBed && photosTaken.show_masterbedRoom" col-7>
                   <div (click)="takePhoto('masterbedRoom')">Master Bedroom</div>  
                  </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col  *ngIf="bedRoom2 && bedRoom2_photo_taken" col-5>
+                    <ion-col  *ngIf="bedRoom2 && photosTaken.show_bedRoom2" col-5>
                      <div (click)="takePhoto('bedRoom2')">Bedroom Two</div>
                     </ion-col>
-                    <ion-col *ngIf="bedRoom3 && bedRoom3_photo_taken"  col-7>
+                    <ion-col *ngIf="bedRoom3 && photosTaken.show_bedRoom3"  col-7>
                         <div (click)="takePhoto('bedRoom3')">Bedroom Three</div>  
                        </ion-col>
                       </ion-row>
