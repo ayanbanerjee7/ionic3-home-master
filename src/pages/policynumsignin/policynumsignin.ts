@@ -45,7 +45,7 @@ export class PolicynumsigninPage {
              this.nativeStorage.setItem('zipCode', fval.zip);
              this.nativeStorage.setItem('policyNumber',fval.policyNumber);
              this.nativeStorage.setItem('token',result.token);
-              this.navCtrl.push('BasicinfoPage');
+              this.navCtrl.push('IntroPage');
            }else {
             this.errorMsg='Error: Logging In!'
            }

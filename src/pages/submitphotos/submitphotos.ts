@@ -61,7 +61,7 @@ export class SubmitphotosPage {
       return Promise.all(keys.map(k => 
         this.nativeStorage.getItem(k).then(data=>
         {
-        if (k.match(/^(noOfBedRooms|noOfBathRooms|primaryHeatSource|otherHomeProperties|zipCode|policyNumber|token)$/)) {
+        if (k.match(/^(noOfBedRooms|noOfBathRooms|primaryHeatSource|otherHomeProperties|zipCode|policyNumber|token|numOfPhotosTobetaken)$/)) {
             // do nothing
         } else {
           // this includes logic needs to be improved added this to avoid IOS default native data 

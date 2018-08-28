@@ -10,9 +10,10 @@ import 'rxjs/add/operator/catch';
 export class SubmitphotosProvider {
 
   constructor(public http: Http) {
-    console.log('Hello SubmitphotosProvider Provider');
+    
   }
   public submitPhotos(token:String,obj: Object): Observable<any> {
+    var start = new Date().getTime();
    // console.log(obj);
     let headers = new Headers({ 'Content-Type': 'application/json','Authorizatio':token});
     let options = new RequestOptions({ headers: headers});
@@ -21,10 +22,11 @@ export class SubmitphotosProvider {
     return this.http
       .post(url, obj,options)
       .map((response: Response) => {
-        console.log("*************response");
-        console.log(response);
-        if (response) {
-          console.log(response);
+        var end = new Date().getTime();
+        var time = end - start;
+         if (response) {
+         console.log('************ Execution time: ' + time);
+         console.log(response);
           return response.json();
         }
       })

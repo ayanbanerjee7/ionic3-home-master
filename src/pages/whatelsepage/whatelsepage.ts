@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild  } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
-
+import { Content } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-whatelsepage',
   templateUrl: 'whatelsepage.html',
 })
 export class WhatelsepagePage {
+  @ViewChild(Content) content: Content;
   checkboxObj={
     dog:false,
     pool:false,
@@ -24,7 +25,7 @@ export class WhatelsepagePage {
     woodStove:false
 
   }
- 
+  errorMsg;
   constructor(public nativeStorage: NativeStorage,private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -43,6 +44,7 @@ export class WhatelsepagePage {
     }
   
     }
+   
     whatElseItems(f){
       console.log(f);
       if(Object.keys(f).length== 0){
@@ -66,8 +68,23 @@ export class WhatelsepagePage {
         alert.present();
       }
      if(Object.keys(f).length > 0){
-      this.nativeStorage.setItem('otherHomeProperties',f);
-        this.navCtrl.push('AllphotosPage') 
+       
+       if(this.checkboxObj.homeBusiness=true) {
+         console.log("**************here****");
+         if(f.whatkindofBusiness=="") {
+          this.content.scrollToTop();
+          this.errorMsg='Please specify about the Home Business!';
+         } else {
+          this.nativeStorage.setItem('otherHomeProperties',f);
+          this.navCtrl.push('AllphotosPage',{'photoId':'firstlanding'});
+         
+          
+         }
+       } else{
+        this.nativeStorage.setItem('otherHomeProperties',f);
+        this.navCtrl.push('AllphotosPage',{'photoId':'firstlanding'}); 
+       }
+      
       }
     }
 }

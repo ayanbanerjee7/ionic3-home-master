@@ -44,19 +44,10 @@
     .error {
         color:red;
     }
-    // .dateclass{
-    //     width:100%;
-    //     }
-        
-    //     .dateclass.placeholderclass::before{
-    //     width:100%;
-    //     content:attr(placeholder);
-    //     }
-        
-    //     .dateclass.placeholderclass:hover::before{
-    //     width:0%;
-    //     content:"";
-    //     }
+    .ion-page > ion-content {
+        margin-top: 5px;
+       
+    }
 }
 
 

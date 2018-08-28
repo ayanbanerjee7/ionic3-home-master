@@ -10,8 +10,8 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12>
-    <p *ngIf="!almostdone_text">These are the photos needed for your policy, tap to get started</p>
-    <p *ngIf="almostdone_text">{{almostdone_text}}</p> 
+    <p *ngIf="!lastPhototext">These are the photos needed for your policy, tap to get started</p>
+    <p *ngIf="lastPhototext">{{lastPhototext}}</p> 
   </ion-col>
   </ion-row>
   <span class="exterior">
@@ -27,21 +27,11 @@
       <ion-col  *ngIf="photosTaken.show_exteriorLeft" col-7>
        <div (click)="takePhoto('exteriorLeft')">Exterior: Left Side</div>
       </ion-col>
-      <ion-col col-5>
-          <!-- <div>Exterior: Back</div>   -->
+      <ion-col *ngIf="photosTaken.show_exteriorBack"col-5>
+        <div (click)="takePhoto('exteriorBack')">Exterior: Back</div> 
          </ion-col>
       </ion-row>
-      <!-- <ion-row>
-          <ion-col col-3>
-           <div>Shed</div>
-          </ion-col>
-          <ion-col col-6>
-              <div>Trampoline</div>  
-             </ion-col>
-             <ion-col col-3>
-                <div>Pool</div>  
-               </ion-col>
-          </ion-row> -->
+     
   </span>
   <span class="exterior interior">
       <!-- <ion-row>
@@ -63,7 +53,7 @@
                 <div (click)="takePhoto('bathRoom3')">Bath Three</div>  
                </ion-col>
           </ion-row>
-          <ion-row >
+          <ion-row>
               <!-- <ion-col col-5>
                <div>Family Room</div>
               </ion-col> -->
@@ -79,7 +69,13 @@
                         <div (click)="takePhoto('bedRoom3')">Bedroom Three</div>  
                        </ion-col>
                       </ion-row>
+            <ion-row  *ngIf="otherHomeProperties">
+            <ion-col col-6 *ngFor="let p of otherHomeProperties">
+                            <div  (click)="takePhoto(p)">{{p}}</div>  
+                       </ion-col>  
+            </ion-row>
+           
       </span>
-      <a (click)="goToNext()">Go to submit</a>
+    
   </ion-grid>
   </ion-content>

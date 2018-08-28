@@ -38,10 +38,13 @@ export class TakeaphotoPage {
     photos: any;
     
     options : CameraOptions = {
-      quality:20,
+      quality:50,
+      allowEdit: true,
+      correctOrientation: true,
       destinationType:this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType:this.camera.MediaType.PICTURE
+      mediaType:this.camera.MediaType.PICTURE,
+      
     }
   
     ngOnInit(){
@@ -74,39 +77,22 @@ export class TakeaphotoPage {
         {this.taken_photo=this.imageURL; 
          },
          error=>console.log("error"));
-  
-        //let m = encodeURIComponent(this.imageURL).match(/%[89ABab]/g);
-        //let size = this.imageURL.length + (m ? m.length : 0);
-  
-        //alert(this.imageURL);
-        
-        let alert = this.alertCtrl.create({
-          title: 'Confirm Photo?',
-          subTitle: 'Please Confirm',
-          buttons: [{
-            text: 'Retake',
-            role: 'cancel',
-            handler: () => {
-              console.log('Retake clicked');
-              
+         if( this.editPhoto==='Yes'){
+          this.navCtrl.push('SubmitphotosPage'); 
+         } else {
+          this.nativeStorage.getItem('numOfPhotosTobetaken').then(num=>{
+            if(num==1) {
+             this.navCtrl.push('SubmitphotosPage');  
+            } else {
+             this.nativeStorage.setItem('numOfPhotosTobetaken',num-1);
+             this.navCtrl.push('AllphotosPage',{'photoId':this.photoId});
             }
-          },
-          {
-            text: 'Confirm',
-            handler: () => {
-              if( this.editPhoto==='Yes') {
-                this.navCtrl.push('SubmitphotosPage');
-              } else{
-                this.navCtrl.push('AllphotosPage',{'photoId':this.photoId});
-              }
-            }
-          }]
-        });
-        alert.present();
-      
-        this.photos.reverse();
-        
-      }, (err) => {
+          
+           }), e=>{
+           console.log(e);
+         }
+         }
+          }, (err) => {
          console.log(err);
       });
     }
@@ -115,7 +101,10 @@ export class TakeaphotoPage {
       this.camera.getPicture({
         sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
         destinationType: this.camera.DestinationType.DATA_URL,
-        quality:20
+        quality:50,
+        allowEdit: true,
+        correctOrientation: true,
+        
        }).then((imageData) => {
         //this.nativeStorage.getItem('bedroom').then(data => alert(data), error=>alert("error"));
          this.imageURL = 'data:image/jpeg;base64,'+imageData;
@@ -126,34 +115,24 @@ export class TakeaphotoPage {
           
         }, 
           error=>console.log("error"));
-         let m = encodeURIComponent(this.imageURL).match(/%[89ABab]/g);
-        let size = this.imageURL.length + (m ? m.length : 0);
-       
-        let alert = this.alertCtrl.create({
-          title: 'Confirm Photo?',
-          subTitle: 'Please Confirm',
-          buttons: [{
-            text: 'Retake',
-            role: 'cancel',
-            handler: () => {
-              console.log('Retake clicked');
-            }
-          },
-          {
-            text: 'Confirm',
-            handler: () => {
-              console.log('Confirm clicked');
-              if( this.editPhoto==='Yes') {
-                this.navCtrl.push('SubmitphotosPage');
+          if( this.editPhoto==='Yes'){
+            this.navCtrl.push('SubmitphotosPage'); 
+           } else {
+            this.nativeStorage.getItem('numOfPhotosTobetaken').then(num=>{
+              if(num==1) {
+               this.navCtrl.push('SubmitphotosPage');  
               } else {
-                this.navCtrl.push('AllphotosPage',{'photoId':this.photoId});
+               this.nativeStorage.setItem('numOfPhotosTobetaken',num-1);
+               this.navCtrl.push('AllphotosPage',{'photoId':this.photoId});
               }
-            }
-          }]
-        });
-        alert.present();
+            
+             }), e=>{
+             console.log(e);
+           }
+           }
+           
        
-        }, (err) => {
+     }, (err) => {
          console.log(err);
        });
      }

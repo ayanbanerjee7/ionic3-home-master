@@ -27,7 +27,7 @@ var SubmitphotosPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__submitphotos__["a" /* SubmitphotosPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__submitphotos__["a" /* SubmitphotosPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__submitphotos__["a" /* SubmitphotosPage */]),
             ],
         })
     ], SubmitphotosPageModule);
@@ -110,7 +110,7 @@ var SubmitphotosPage = /** @class */ (function () {
         this.nativeStorage.keys().then(function (keys) {
             return Promise.all(keys.map(function (k) {
                 return _this.nativeStorage.getItem(k).then(function (data) {
-                    if (k.match(/^(noOfBedRooms|noOfBathRooms|primaryHeatSource|otherHomeProperties|zipCode|policyNumber|token)$/)) {
+                    if (k.match(/^(noOfBedRooms|noOfBathRooms|primaryHeatSource|otherHomeProperties|zipCode|policyNumber|token|numOfPhotosTobetaken)$/)) {
                         // do nothing
                     }
                     else {
@@ -173,7 +173,7 @@ var SubmitphotosPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-submitphotos',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\submitphotos\submitphotos.html"*/'<ion-header>\n    <ion-navbar hideBackButton color="primary">\n      <ion-title>\n        <b>Plymouth Rock</b> Home Inspector\n      </ion-title>\n    </ion-navbar>\n  </ion-header>\n\n<ion-content class="submit-page" padding>\n     <ion-grid>\n    <ion-row justify-content-center>\n     <p class="alldone-text">All done. Good job!</p> \n     <p class="retake-text">Retake any photo or submit your inventory now</p>\n    </ion-row>\n    <ion-row justify-content-center>\n        <button ion-button color="secondary"  (click)="uploadPhotos()"  expand="full">Submit Photos</button>  \n    </ion-row>\n    <p class="error" *ngIf="uploadErrorMsg">{{uploadErrorMsg}}</p>\n   \n    <ion-row class="gallery">\n    <ion-col col-4 *ngFor="let m of images">\n        <img (click)="editPhoto(m.key)" src="{{m.imagedata}}"/> \n   </ion-col>\n    </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\submitphotos\submitphotos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__providers_submitphotos_submitphotos__["a" /* SubmitphotosProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__providers_submitphotos_submitphotos__["a" /* SubmitphotosProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */]])
     ], SubmitphotosPage);
     return SubmitphotosPage;
 }());

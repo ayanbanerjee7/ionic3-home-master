@@ -25685,7 +25685,7 @@ ion-navbar.toolbar {
 
 .button-md, .button-ios {
   width: 100%;
-  height: 5rem;
+  height: 5.4rem;
   font-size: 2rem;
   text-transform: none;
 }
@@ -25696,6 +25696,7 @@ ion-navbar.toolbar {
 
 .error {
   color: red;
+  font-size: 1.5rem;
 }
 
 .checkbox-md .checkbox-checked {
@@ -25718,6 +25719,36 @@ ion-navbar.toolbar {
 .alert-ios .alert-sub-title {
   font-size: 13px;
   margin-top: 10px;
+}
+
+.checkbox-md .checkbox-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.checkbox-ios .checkbox-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.checkbox-md .checkbox-checked .checkbox-inner {
+  left: 7px;
+  top: 3px;
+  position: absolute;
+  width: 6px;
+  height: 12px;
+}
+
+.checkbox-ios .checkbox-checked .checkbox-inner {
+  left: 7px;
+  top: 3px;
+  position: absolute;
+  width: 6px;
+  height: 12px;
+}
+
+.col {
+  position: initial;
 }
 
 page-allphotos {
@@ -25760,9 +25791,9 @@ page-basicinfo .counter-row {
   border: solid 1px;
   border-radius: 6px;
   text-align: center;
-  height: 50px;
+  height: 55px;
   border-color: #cccccc;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 page-basicinfo .add-border-color {
@@ -25796,6 +25827,7 @@ page-basicinfo .text {
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  margin-right: 25%;
 }
 
 page-basicinfo ion-checkbox {
@@ -25859,6 +25891,10 @@ page-basicinfo ion-checkbox {
   color: red;
 }
 
+.home-page .ion-page > ion-content {
+  margin-top: 5px;
+}
+
 page-intro {
   font-family: 'Whitney-Medium', 'Whitney Medium', 'Whitney';
   color: #4D4D4F;
@@ -25874,7 +25910,7 @@ page-intro p {
 }
 
 page-intro .got-it-btn {
-  width: 100%;
+  margin-top: 4%;
 }
 
 page-intro .title {
@@ -25883,10 +25919,11 @@ page-intro .title {
   color: #007AC9;
   text-align: center;
   line-height: 27px;
+  margin: 7px;
 }
 
 page-intro .title-row {
-  margin-top: 60px;
+  margin-top: 10%;
 }
 
 .home-page {
@@ -25954,6 +25991,14 @@ page-intro .title-row {
   margin-top: 10px;
 }
 
+.home-page .ion-page > ion-content {
+  margin-top: 5px;
+}
+
+.home-page form {
+  margin-top: 10px;
+}
+
 page-submitphotos .submit-page {
   font-family: 'Whitney-Medium', 'Whitney Medium', 'Whitney';
   color: #4D4D4F;
@@ -25982,8 +26027,9 @@ page-submitphotos .submit-page .gallery {
   margin-top: 30px;
 }
 
-page-submitphotos .submit-page ion-img {
-  contain: content;
+page-submitphotos .submit-page .gallery img {
+  height: 75px;
+  width: 100%;
 }
 
 .bottom-text p {
@@ -26017,6 +26063,7 @@ page-submitphotos .submit-page ion-img {
   background-image: url("./../assets/imgs/photo_bg.png");
   background-position: center;
   background-size: cover;
+  max-height: 300px;
 }
 
 #frame #home-img {
@@ -26047,6 +26094,7 @@ page-submitphotos .submit-page ion-img {
 .taken-photo {
   height: 30%;
   width: 100%;
+  max-height: 300px;
 }
 
 .toolbar-background-ios, .toolbar-background-md {
@@ -26089,9 +26137,18 @@ page-whatelsepage .counter-row {
   border: solid 1px;
   border-radius: 6px;
   text-align: center;
-  height: 50px;
+  height: 55px;
   border-color: #cccccc;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+page-whatelsepage ion-input {
+  border: solid 1px;
+  border-radius: 6px;
+  text-align: center;
+  height: 70px;
+  border-color: #cccccc;
+  margin-bottom: 10px;
 }
 
 page-whatelsepage .col-border {
@@ -26131,6 +26188,11 @@ page-whatelsepage .text {
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  margin-right: 25%;
+}
+
+page-whatelsepage .rental-text {
+  margin-right: 6%;
 }
 
 page-whatelsepage ion-checkbox {

@@ -27,7 +27,7 @@ var AllphotosPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__allphotos__["a" /* AllphotosPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__allphotos__["a" /* AllphotosPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__allphotos__["a" /* AllphotosPage */]),
             ],
         })
     ], AllphotosPageModule);
@@ -69,7 +69,11 @@ var AllphotosPage = /** @class */ (function () {
         this.nativeStorage = nativeStorage;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.noOfBedRooms = 0;
+        this.noOfBathRooms = 0;
         this.photoId = null;
+        this.minExteriorPhotos = 4;
+        this.otherHomeProperties = [];
         this.photosTaken = {
             show_masterbedRoom: true,
             show_bedRoom2: true,
@@ -79,18 +83,31 @@ var AllphotosPage = /** @class */ (function () {
             show_bathRoom3: true,
             show_exteriorFront: true,
             show_exteriorRight: true,
-            show_exteriorLeft: true
+            show_exteriorLeft: true,
+            show_exteriorBack: true
         };
         this.photoId = this.navParams.get('photoId');
     }
     AllphotosPage.prototype.ngOnInit = function () {
         var _this = this;
+        var count = 0;
         if (this.photoId) {
             this.photosTaken['show_' + this.photoId] = true;
             setTimeout(function () {
                 _this.photosTaken['show_' + _this.photoId] = false;
             }, 1000);
         }
+        this.nativeStorage.getItem('otherHomeProperties').then(function (data) {
+            var keys = Object.keys(data);
+            for (var i = keys.length - 1; i >= 0; i--) {
+                if (keys[i] === 'whatkindofBusiness') {
+                    keys.splice(i, 1);
+                }
+            }
+            _this.otherHomeProperties = keys;
+        }), function (e) {
+            console.log(e);
+        };
         this.nativeStorage.keys().then(function (keys) {
             return Promise.all(keys.map(function (k) {
                 return _this.nativeStorage.getItem(k).then(function (data) {
@@ -100,32 +117,13 @@ var AllphotosPage = /** @class */ (function () {
                     if (k == 'noOfBathRooms') {
                         _this.noOfBathRooms = data;
                     }
-                    if (k == 'exteriorFront' && _this.photoId !== 'exteriorFront') {
-                        _this.photosTaken.show_exteriorFront = false;
+                    if (k == 'numOfPhotosTobetaken') {
+                        if (data == 1) {
+                            _this.lastPhototext = 'Almost finished, just one photo left!';
+                        }
                     }
-                    if (k == 'exteriorRight' && _this.photoId !== 'exteriorRight') {
-                        _this.photosTaken.show_exteriorRight = false;
-                    }
-                    if (k == 'exteriorLeft' && _this.photoId !== 'exteriorLeft') {
-                        _this.photosTaken.show_exteriorLeft = false;
-                    }
-                    if (k == 'masterbedRoom' && _this.photoId !== 'masterbedRoom') {
-                        _this.photosTaken.show_masterbedRoom = false;
-                    }
-                    if (k == 'bedRoom2' && _this.photoId !== 'bedRoom2') {
-                        _this.photosTaken.show_bedRoom2 = false;
-                    }
-                    if (k == 'bedRoom3' && _this.photoId !== 'bedRoom3') {
-                        _this.photosTaken.show_bedRoom3 = false;
-                    }
-                    if (k == 'masterbathRoom' && _this.photoId !== 'masterbathRoom') {
-                        _this.photosTaken.show_masterbathRoom = false;
-                    }
-                    if (k == 'bathRoom2' && _this.photoId !== 'bathRoom2') {
-                        _this.photosTaken.show_bathRoom2 = false;
-                    }
-                    if (k == 'bathRoom3' && _this.photoId !== 'bathRoom3') {
-                        _this.photosTaken.show_bathRoom3 = false;
+                    if (_this.photoId !== k) {
+                        _this.photosTaken['show_' + k] = false;
                     }
                     if (_this.noOfBedRooms > 2) {
                         _this.masterBed = true;
@@ -151,22 +149,22 @@ var AllphotosPage = /** @class */ (function () {
                     if (_this.noOfBathRooms == 1) {
                         _this.masterBath = true;
                     }
+                    if (_this.photoId == 'firstlanding') {
+                        var numOfPhotosTobetaken = _this.minExteriorPhotos + _this.noOfBathRooms + _this.noOfBedRooms + _this.otherHomeProperties.length;
+                        _this.nativeStorage.setItem('numOfPhotosTobetaken', numOfPhotosTobetaken);
+                        console.log(numOfPhotosTobetaken);
+                    }
+                    var array = _this.otherHomeProperties;
+                    for (var i = array.length - 1; i >= 0; i--) {
+                        if (array[i] === k) {
+                            array.splice(i, 1);
+                        }
+                    }
                 });
             }));
         }), function (e) {
             console.log(e);
         };
-        var len = Object.keys(this.photosTaken).length;
-        var count = 0;
-        for (var k in this.photosTaken) {
-            if (this.photosTaken[k] == false) {
-                count++;
-            }
-        }
-        console.log('***************' + count);
-        if (count === len - 1) {
-            this.almostdone_text = 'Almost finished, just one photo left!';
-        }
     };
     AllphotosPage.prototype.takePhoto = function (page) {
         this.navCtrl.push('TakeaphotoPage', { 'photoId': page });
@@ -176,9 +174,9 @@ var AllphotosPage = /** @class */ (function () {
     };
     AllphotosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-allphotos',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\allphotos\allphotos.html"*/'<ion-header>\n  <ion-navbar hideBackButton color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="all-photos-page" padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-12>\n    <p *ngIf="!almostdone_text">These are the photos needed for your policy, tap to get started</p>\n    <p *ngIf="almostdone_text">{{almostdone_text}}</p> \n  </ion-col>\n  </ion-row>\n  <span class="exterior">\n  <ion-row>\n  <ion-col  *ngIf="photosTaken.show_exteriorFront" col-5>\n   <div (click)="takePhoto(\'exteriorFront\')">Exterior: Front</div>\n  </ion-col>\n  <ion-col  *ngIf="photosTaken.show_exteriorRight" col-7>\n      <div (click)="takePhoto(\'exteriorRight\')">Exterior: Right Side</div>  \n     </ion-col>\n  </ion-row>\n  <ion-row >\n      <ion-col  *ngIf="photosTaken.show_exteriorLeft" col-7>\n       <div (click)="takePhoto(\'exteriorLeft\')">Exterior: Left Side</div>\n      </ion-col>\n      <ion-col col-5>\n          <!-- <div>Exterior: Back</div>   -->\n         </ion-col>\n      </ion-row>\n      <!-- <ion-row>\n          <ion-col col-3>\n           <div>Shed</div>\n          </ion-col>\n          <ion-col col-6>\n              <div>Trampoline</div>  \n             </ion-col>\n             <ion-col col-3>\n                <div>Pool</div>  \n               </ion-col>\n          </ion-row> -->\n  </span>\n  <span class="exterior interior">\n      <!-- <ion-row>\n      <ion-col col-4>\n       <div>Kitchen</div>\n      </ion-col>\n      <ion-col col-6>\n          <div>Livingroom</div>  \n         </ion-col>\n      </ion-row> -->\n      <ion-row >\n          <ion-col *ngIf="masterBath && photosTaken.show_masterbathRoom" col-4>\n           <div (click)="takePhoto(\'masterbathRoom\')" >Master Bath</div>\n          </ion-col>\n          <ion-col *ngIf="bathRoom2 && photosTaken.show_bathRoom2" col-4>\n              <div (click)="takePhoto(\'bathRoom2\')" >Bath two</div>  \n             </ion-col>\n             <ion-col *ngIf="bathRoom3 && photosTaken.show_bathRoom3" col-4>\n                <div (click)="takePhoto(\'bathRoom3\')">Bath Three</div>  \n               </ion-col>\n          </ion-row>\n          <ion-row >\n              <!-- <ion-col col-5>\n               <div>Family Room</div>\n              </ion-col> -->\n              <ion-col *ngIf="masterBed && photosTaken.show_masterbedRoom" col-7>\n                  <div (click)="takePhoto(\'masterbedRoom\')">Master Bedroom</div>  \n                 </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col  *ngIf="bedRoom2 && photosTaken.show_bedRoom2" col-5>\n                     <div (click)="takePhoto(\'bedRoom2\')">Bedroom Two</div>\n                    </ion-col>\n                    <ion-col *ngIf="bedRoom3 && photosTaken.show_bedRoom3"  col-7>\n                        <div (click)="takePhoto(\'bedRoom3\')">Bedroom Three</div>  \n                       </ion-col>\n                      </ion-row>\n      </span>\n      <a (click)="goToNext()">Go to submit</a>\n  </ion-grid>\n  </ion-content>\n'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\allphotos\allphotos.html"*/,
+            selector: 'page-allphotos',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\allphotos\allphotos.html"*/'<ion-header>\n  <ion-navbar hideBackButton color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="all-photos-page" padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-12>\n    <p *ngIf="!lastPhototext">These are the photos needed for your policy, tap to get started</p>\n    <p *ngIf="lastPhototext">{{lastPhototext}}</p> \n  </ion-col>\n  </ion-row>\n  <span class="exterior">\n  <ion-row>\n  <ion-col  *ngIf="photosTaken.show_exteriorFront" col-5>\n   <div (click)="takePhoto(\'exteriorFront\')">Exterior: Front</div>\n  </ion-col>\n  <ion-col  *ngIf="photosTaken.show_exteriorRight" col-7>\n      <div (click)="takePhoto(\'exteriorRight\')">Exterior: Right Side</div>  \n     </ion-col>\n  </ion-row>\n  <ion-row >\n      <ion-col  *ngIf="photosTaken.show_exteriorLeft" col-7>\n       <div (click)="takePhoto(\'exteriorLeft\')">Exterior: Left Side</div>\n      </ion-col>\n      <ion-col *ngIf="photosTaken.show_exteriorBack"col-5>\n        <div (click)="takePhoto(\'exteriorBack\')">Exterior: Back</div> \n         </ion-col>\n      </ion-row>\n     \n  </span>\n  <span class="exterior interior">\n      <!-- <ion-row>\n      <ion-col col-4>\n       <div>Kitchen</div>\n      </ion-col>\n      <ion-col col-6>\n          <div>Livingroom</div>  \n         </ion-col>\n      </ion-row> -->\n      <ion-row >\n          <ion-col *ngIf="masterBath && photosTaken.show_masterbathRoom" col-4>\n           <div (click)="takePhoto(\'masterbathRoom\')" >Master Bath</div>\n          </ion-col>\n          <ion-col *ngIf="bathRoom2 && photosTaken.show_bathRoom2" col-4>\n              <div (click)="takePhoto(\'bathRoom2\')" >Bath two</div>  \n             </ion-col>\n             <ion-col *ngIf="bathRoom3 && photosTaken.show_bathRoom3" col-4>\n                <div (click)="takePhoto(\'bathRoom3\')">Bath Three</div>  \n               </ion-col>\n          </ion-row>\n          <ion-row>\n              <!-- <ion-col col-5>\n               <div>Family Room</div>\n              </ion-col> -->\n              <ion-col *ngIf="masterBed && photosTaken.show_masterbedRoom" col-7>\n                  <div (click)="takePhoto(\'masterbedRoom\')">Master Bedroom</div>  \n                 </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col  *ngIf="bedRoom2 && photosTaken.show_bedRoom2" col-5>\n                     <div (click)="takePhoto(\'bedRoom2\')">Bedroom Two</div>\n                    </ion-col>\n                    <ion-col *ngIf="bedRoom3 && photosTaken.show_bedRoom3"  col-7>\n                        <div (click)="takePhoto(\'bedRoom3\')">Bedroom Three</div>  \n                       </ion-col>\n                      </ion-row>\n            <ion-row  *ngIf="otherHomeProperties">\n            <ion-col col-6 *ngFor="let p of otherHomeProperties">\n                            <div  (click)="takePhoto(p)">{{p}}</div>  \n                       </ion-col>  \n            </ion-row>\n           \n      </span>\n    \n  </ion-grid>\n  </ion-content>\n'/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\allphotos\allphotos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], AllphotosPage);
     return AllphotosPage;
 }());

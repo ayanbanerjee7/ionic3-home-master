@@ -20,10 +20,12 @@ page-submitphotos {
         }  
         .gallery {
             margin-top: 30px;
+            img {
+                height: 75px;
+                width: 100%;
+            }
         }
-        ion-img {
-            contain: content;
-        }
+        
         }  
       
            

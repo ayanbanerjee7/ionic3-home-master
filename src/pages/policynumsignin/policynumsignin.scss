@@ -15,6 +15,7 @@
         .thanks_text {
             font-size: 16px;
             margin-top: 0px; 
+           
             
         }
     }
@@ -51,6 +52,13 @@
         border-radius: 100%;
         padding: 9px 9px 9px 10px;
         font-weight: bold;
+        margin-top: 10px;
+    }
+    .ion-page > ion-content {
+        margin-top: 5px;
+       
+    }
+    form {
         margin-top: 10px;
     }
 }

@@ -6,10 +6,18 @@ page-whatelsepage {
       border:solid 1px;
       border-radius: 6px; 
       text-align:  center;
-      height: 50px; 
+      height: 55px; 
       border-color:rgba(204, 204, 204, 1);
-      margin-bottom: 20px;
+      margin-bottom: 10px;
      } 
+     ion-input {
+        border:solid 1px;
+        border-radius: 6px; 
+        text-align:  center;
+        height: 70px; 
+        border-color:rgba(204, 204, 204, 1);
+        margin-bottom: 10px;  
+     }
      .col-border {
       border-right: solid 1px;    
       border-color:rgba(204, 204, 204, 1);
@@ -41,6 +49,10 @@ page-whatelsepage {
         position: relative;
         top: 50%;
         transform: translateY(-50%);
+        margin-right: 25%;
+     }
+     .rental-text {
+        margin-right: 6%;
      }
      ion-checkbox {
         top: 50%;
@@ -50,6 +62,6 @@ page-whatelsepage {
         border-color: #FF6319;
         color:#FF6319;
        }
-     
+      
     }
 

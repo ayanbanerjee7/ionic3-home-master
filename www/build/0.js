@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 289:
+/***/ 290:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TakeaphotoPageModule", function() { return TakeaphotoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__takeaphoto__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__takeaphoto__ = __webpack_require__(300);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27,7 +27,7 @@ var TakeaphotoPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__takeaphoto__["a" /* TakeaphotoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__takeaphoto__["a" /* TakeaphotoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__takeaphoto__["a" /* TakeaphotoPage */]),
             ],
         })
     ], TakeaphotoPageModule);
@@ -38,7 +38,7 @@ var TakeaphotoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 299:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47,7 +47,7 @@ var TakeaphotoPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_util__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_util__ = __webpack_require__(301);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -78,10 +78,12 @@ var TakeaphotoPage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.photoId = null;
         this.options = {
-            quality: 20,
+            quality: 50,
+            allowEdit: true,
+            correctOrientation: true,
             destinationType: this.camera.DestinationType.DATA_URL,
             encodingType: this.camera.EncodingType.JPEG,
-            mediaType: this.camera.MediaType.PICTURE
+            mediaType: this.camera.MediaType.PICTURE,
         };
         this.photoId = this.navParams.get('photoId');
         this.editPhoto = this.navParams.get('editPhoto');
@@ -117,33 +119,22 @@ var TakeaphotoPage = /** @class */ (function () {
             _this.nativeStorage.setItem(_this.photoId, _this.imageURL).then(function () {
                 _this.taken_photo = _this.imageURL;
             }, function (error) { return console.log("error"); });
-            //let m = encodeURIComponent(this.imageURL).match(/%[89ABab]/g);
-            //let size = this.imageURL.length + (m ? m.length : 0);
-            //alert(this.imageURL);
-            var alert = _this.alertCtrl.create({
-                title: 'Confirm Photo?',
-                subTitle: 'Please Confirm',
-                buttons: [{
-                        text: 'Retake',
-                        role: 'cancel',
-                        handler: function () {
-                            console.log('Retake clicked');
-                        }
-                    },
-                    {
-                        text: 'Confirm',
-                        handler: function () {
-                            if (_this.editPhoto === 'Yes') {
-                                _this.navCtrl.push('SubmitphotosPage');
-                            }
-                            else {
-                                _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
-                            }
-                        }
-                    }]
-            });
-            alert.present();
-            _this.photos.reverse();
+            if (_this.editPhoto === 'Yes') {
+                _this.navCtrl.push('SubmitphotosPage');
+            }
+            else {
+                _this.nativeStorage.getItem('numOfPhotosTobetaken').then(function (num) {
+                    if (num == 1) {
+                        _this.navCtrl.push('SubmitphotosPage');
+                    }
+                    else {
+                        _this.nativeStorage.setItem('numOfPhotosTobetaken', num - 1);
+                        _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
+                    }
+                }), function (e) {
+                    console.log(e);
+                };
+            }
         }, function (err) {
             console.log(err);
         });
@@ -153,7 +144,9 @@ var TakeaphotoPage = /** @class */ (function () {
         this.camera.getPicture({
             sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
             destinationType: this.camera.DestinationType.DATA_URL,
-            quality: 20
+            quality: 50,
+            allowEdit: true,
+            correctOrientation: true,
         }).then(function (imageData) {
             //this.nativeStorage.getItem('bedroom').then(data => alert(data), error=>alert("error"));
             _this.imageURL = 'data:image/jpeg;base64,' + imageData;
@@ -161,32 +154,22 @@ var TakeaphotoPage = /** @class */ (function () {
             _this.nativeStorage.setItem(_this.photoId, _this.imageURL).then(function () {
                 _this.taken_photo = _this.imageURL;
             }, function (error) { return console.log("error"); });
-            var m = encodeURIComponent(_this.imageURL).match(/%[89ABab]/g);
-            var size = _this.imageURL.length + (m ? m.length : 0);
-            var alert = _this.alertCtrl.create({
-                title: 'Confirm Photo?',
-                subTitle: 'Please Confirm',
-                buttons: [{
-                        text: 'Retake',
-                        role: 'cancel',
-                        handler: function () {
-                            console.log('Retake clicked');
-                        }
-                    },
-                    {
-                        text: 'Confirm',
-                        handler: function () {
-                            console.log('Confirm clicked');
-                            if (_this.editPhoto === 'Yes') {
-                                _this.navCtrl.push('SubmitphotosPage');
-                            }
-                            else {
-                                _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
-                            }
-                        }
-                    }]
-            });
-            alert.present();
+            if (_this.editPhoto === 'Yes') {
+                _this.navCtrl.push('SubmitphotosPage');
+            }
+            else {
+                _this.nativeStorage.getItem('numOfPhotosTobetaken').then(function (num) {
+                    if (num == 1) {
+                        _this.navCtrl.push('SubmitphotosPage');
+                    }
+                    else {
+                        _this.nativeStorage.setItem('numOfPhotosTobetaken', num - 1);
+                        _this.navCtrl.push('AllphotosPage', { 'photoId': _this.photoId });
+                    }
+                }), function (e) {
+                    console.log(e);
+                };
+            }
         }, function (err) {
             console.log(err);
         });
@@ -195,7 +178,7 @@ var TakeaphotoPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-takeaphoto',template:/*ion-inline-start:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/'<ion-header>\n  <ion-navbar hideBackButton color="primary">\n    <ion-title>\n     <b>Plymouth Rock</b> Home Inspector\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n  <ion-content class="all-photos-page" padding>\n    <ion-grid>\n      <ion-row class="frame-margin">\n          <div *ngIf="!taken_photo" id="frame" >\n              <div class="outline">\n               <div class="inner-border">\n                      <img style="width:70px; height: 65px;" src="assets/imgs/{{photo_thumbnail}}.png">\n              </div>   \n              </div>\n              </div> \n        <img *ngIf="taken_photo" class="taken-photo" src="{{taken_photo}}"/>\n      </ion-row>\n      <ion-row justify-content-center class="upload-btns">\n         <ion-img (click)="accessGallery()" style="width:60px; height: 60px; margin-right: 45px;" src="assets/imgs/gallery_btn.png"></ion-img>\n          <ion-img (click)="takePhoto()" style="width:65px; height: 65px;" src="assets/imgs/camera_icon.png"></ion-img>\n      </ion-row>\n    </ion-grid>\n    \n </ion-content> \n <ion-footer class="bottom-text">\n    <ion-toolbar>\n        <div><p class="title">{{title_text}}</p></div>\n        <div><p>{{tip_text}}</p></div>\n    </ion-toolbar>\n  </ion-footer>\n  \n  \n  \n  '/*ion-inline-end:"c:\ionic\ionic3-home-master\ionic3-home-master\src\pages\takeaphoto\takeaphoto.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], TakeaphotoPage);
     return TakeaphotoPage;
 }());
@@ -204,7 +187,7 @@ var TakeaphotoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 300:
+/***/ 301:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -225,6 +208,10 @@ var util = /** @class */ (function () {
                 },
                 "exteriorLeft": {
                     "title": "Exterior: Left Side",
+                    "tip": "Get the side of your house by standing at the front corner, making sure to get as much of the side as possible"
+                },
+                "exteriorBack": {
+                    "title": "Exterior: Back Side",
                     "tip": "Get the side of your house by standing at the front corner, making sure to get as much of the side as possible"
                 },
                 "masterbedRoom": {
@@ -248,6 +235,54 @@ var util = /** @class */ (function () {
                 },
                 "bathRoom3": {
                     "title": "Bathroom3",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Dog": {
+                    "title": "Dog",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Pool": {
+                    "title": "Pool",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Trampoline": {
+                    "title": "Trampoline",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Shed": {
+                    "title": "Shed",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Garage": {
+                    "title": "Garage",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Basement": {
+                    "title": "Basement",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Rental Apt": {
+                    "title": "Rental Apartment",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Home Business": {
+                    "title": "Home Business",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Oil Tank": {
+                    "title": "Oil Tank",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Smoke Detector": {
+                    "title": "Smoke Detectors",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Security System": {
+                    "title": "Smoke Detectors",
+                    "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
+                },
+                "Wood Stove": {
+                    "title": "Wood Stove",
                     "tip": "Pay attention to windows and the large furniture  pieces in the bedroom this is filler text"
                 }
             }

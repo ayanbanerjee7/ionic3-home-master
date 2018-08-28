@@ -27,6 +27,7 @@
      background-image: url('./../assets/imgs/photo_bg.png');
      background-position: center;
      background-size: cover;
+     max-height: 300px;
  
  #home-img {
       position: absolute;
@@ -54,7 +55,8 @@
  }
  .taken-photo {
      height:30%;
-     width:100%
+     width:100%;
+     max-height: 300px;
  }
  .toolbar-background-ios, .toolbar-background-md {
     background-color: rgba(252, 231, 151, 1); 

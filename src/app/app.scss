@@ -21,7 +21,7 @@
 }
 .button-md, .button-ios {
     width:100%;
-    height: 5rem;
+    height: 5.4rem;
     font-size: 2rem;
     text-transform: none;
 }
@@ -29,7 +29,9 @@
     min-height: 65px;
 }
 .error {
-    color:red;
+    color: red;
+    font-size: 1.5rem;
+
 }
 .checkbox-md .checkbox-checked {
  border-radius: 50%;
@@ -47,4 +49,29 @@
 .alert-ios .alert-sub-title {
     font-size: 13px;
     margin-top: 10px;
+}
+.checkbox-md .checkbox-icon {
+    width: 25px;
+    height: 25px;
+}
+.checkbox-ios .checkbox-icon {
+    width: 25px;
+    height: 25px;
+}
+.checkbox-md .checkbox-checked .checkbox-inner {
+    left: 7px;
+    top: 3px;
+    position: absolute;
+    width: 6px;
+    height: 12px;
+}
+.checkbox-ios .checkbox-checked .checkbox-inner {
+    left: 7px;
+    top: 3px;
+    position: absolute;
+    width: 6px;
+    height: 12px;
+}
+.col {
+    position: initial;
 }
